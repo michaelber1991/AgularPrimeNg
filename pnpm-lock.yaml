@@ -68,7 +68,7 @@ devDependencies:
     specifier: 17.1.1
     version: 17.1.1(eslint@8.55.0)(typescript@5.2.2)
   '@angular/cli':
-    specifier: ^17.0.1
+    specifier: ^17.0.5
     version: 17.0.5
   '@angular/compiler-cli':
     specifier: ^17.0.0
