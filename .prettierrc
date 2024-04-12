@@ -11,5 +11,6 @@
 	"tabWidth": 2,
 	"trailingComma": "none",
 	"useTabs": true,
-	"endOfLine": "auto"
+	"endOfLine": "auto",
+	"singleAttributePerLine": true
 }
