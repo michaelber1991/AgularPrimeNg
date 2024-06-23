@@ -12,5 +12,5 @@ import {
 	styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-	public dataInput = signal<VirtualScrollTableInput>(new VirtualScrollTableInput({ label: '' }));
+	public dataInput = signal<VirtualScrollTableInput>(new VirtualScrollTableInput({ title: 'Test' }));
 }
