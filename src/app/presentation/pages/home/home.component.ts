@@ -1,16 +1,26 @@
 import { Component, signal } from '@angular/core';
-import {
-	VirtualScrollTableComponent,
-	VirtualScrollTableInput
-} from '@components/virtual-scroll-table/virtual-scroll-table.component';
+import { PrimeTableComponent } from '@components/prime-table/prime-table.component';
+import { PrimeTableColumn, PrimeTable } from '@components/prime-table/prime-table.component.model';
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [VirtualScrollTableComponent],
+	imports: [PrimeTableComponent],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-	public dataInput = signal<VirtualScrollTableInput>(new VirtualScrollTableInput({ title: 'Test' }));
+	public dataInput = signal<PrimeTable>(
+		new PrimeTable({
+			title: 'Test',
+			columns: [
+				new PrimeTableColumn({ property: 'code', header: 'Code', isFrozen: true }),
+				new PrimeTableColumn({ property: 'lastname', header: 'Lastname', isFrozen: false }),
+				new PrimeTableColumn({ property: 'name', header: 'Name', isFrozen: false }),
+				new PrimeTableColumn({ property: 'age', header: 'Age', isFrozen: false }),
+				new PrimeTableColumn({ property: 'email', header: 'Email', isFrozen: false }),
+				new PrimeTableColumn({ property: 'address', header: 'Address', isFrozen: false })
+			]
+		})
+	);
 }

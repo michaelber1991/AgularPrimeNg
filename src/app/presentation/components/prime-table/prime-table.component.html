@@ -1,0 +1,44 @@
+<p-table
+	[columns]="input().columns"
+	[value]="products"
+	[rows]="3"
+	[rowsPerPageOptions]="[3, 25, 50]"
+	[paginator]="true"
+	[scrollable]="true"
+>
+	<ng-template
+		pTemplate="header"
+		let-columns
+	>
+		<tr>
+			@for (column of input().columns; track $index) {
+				<th
+					pFrozenColumn
+					alignFrozen="left"
+					[frozen]="column.isFrozen"
+					style="min-width: ''"
+				>
+					{{ column.header }}
+				</th>
+			}
+		</tr>
+	</ng-template>
+	<ng-template
+		pTemplate="body"
+		let-rowData
+		let-columns="columns"
+	>
+		<tr>
+			@for (column of input().columns; track $index) {
+				<td
+					pFrozenColumn
+					alignFrozen="left"
+					[frozen]="column.isFrozen"
+					style="min-width: ''"
+				>
+					{{ rowData[column.property] }}
+				</td>
+			}
+		</tr>
+	</ng-template>
+</p-table>

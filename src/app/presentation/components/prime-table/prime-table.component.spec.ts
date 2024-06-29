@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VirtualScrollTableComponent } from './virtual-scroll-table.component';
+import { PrimeTableComponent } from './prime-table.component';
 
 describe('VirtualScrollTableComponent', () => {
-	let component: VirtualScrollTableComponent;
-	let fixture: ComponentFixture<VirtualScrollTableComponent>;
+	let component: PrimeTableComponent;
+	let fixture: ComponentFixture<PrimeTableComponent>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [VirtualScrollTableComponent]
+			imports: [PrimeTableComponent]
 		}).compileComponents();
 
-		fixture = TestBed.createComponent(VirtualScrollTableComponent);
+		fixture = TestBed.createComponent(PrimeTableComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
