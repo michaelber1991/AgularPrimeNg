@@ -1,11 +1,13 @@
 <p-table
 	[columns]="input().columns"
 	[value]="products"
-	[rows]="3"
-	[rowsPerPageOptions]="[3, 25, 50]"
+	[rows]="input().rowsPerPageOptions[0]"
+	[rowsPerPageOptions]="input().rowsPerPageOptions"
 	[paginator]="true"
 	[scrollable]="true"
+	styleClass="prime-table-container"
 >
+	<!-- #region Header -->
 	<ng-template
 		pTemplate="header"
 		let-columns
@@ -14,15 +16,18 @@
 			@for (column of input().columns; track $index) {
 				<th
 					pFrozenColumn
-					alignFrozen="left"
+					alignFrozen="{{ column.alignFrozen }}"
 					[frozen]="column.isFrozen"
-					style="min-width: ''"
+					[ngStyle]="{ 'min-width': column.minWidth }"
 				>
 					{{ column.header }}
 				</th>
 			}
 		</tr>
 	</ng-template>
+	<!-- #endregion Header -->
+
+	<!-- #region Body -->
 	<ng-template
 		pTemplate="body"
 		let-rowData
@@ -32,13 +37,14 @@
 			@for (column of input().columns; track $index) {
 				<td
 					pFrozenColumn
-					alignFrozen="left"
+					alignFrozen="{{ column.alignFrozen }}"
 					[frozen]="column.isFrozen"
-					style="min-width: ''"
+					[ngStyle]="{ 'min-width': column.minWidth }"
 				>
 					{{ rowData[column.property] }}
 				</td>
 			}
 		</tr>
 	</ng-template>
+	<!-- #endregion Body -->
 </p-table>

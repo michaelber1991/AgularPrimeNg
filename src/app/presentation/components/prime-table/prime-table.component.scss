@@ -1,0 +1,15 @@
+:host {
+	display: contents;
+}
+
+::ng-deep .prime-table-container {
+	height: 100%;
+
+	.p-datatable-wrapper {
+		height: 100%;
+
+		table {
+			height: 100%;
+		}
+	}
+}
