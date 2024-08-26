@@ -1,7 +1,6 @@
 {
 	"root": true,
 	"ignorePatterns": ["projects/**/*", "src/app/**/*.spec.ts", "node_modules/"],
-
 	"overrides": [
 		{
 			"files": ["*.ts"],
@@ -54,5 +53,6 @@
 			],
 			"rules": {}
 		}
-	]
+	],
+	"extends": ["plugin:storybook/recommended"]
 }

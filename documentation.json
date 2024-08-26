@@ -1,0 +1,649 @@
+{
+	"pipes": [],
+	"interfaces": [],
+	"injectables": [],
+	"guards": [],
+	"interceptors": [],
+	"classes": [
+		{
+			"name": "PrimeTable",
+			"id": "class-PrimeTable-7201f78435dcc1b27733e05216ff10667a421558b5697bf556024b11df2af2c71e0dad9aa53a68f0b2e4d9f1b2971bae75e5a1672da4a01f7a654113dafc1e72",
+			"file": "src/app/presentation/components/prime-table/prime-table.component.model.ts",
+			"deprecated": false,
+			"deprecationMessage": "",
+			"type": "class",
+			"sourceCode": "export class PrimeTable {\n\ttitle: string;\n\tcolumns: PrimeTableColumn[];\n\trowsPerPageOptions: number[];\n\tconstructor(data: Partial<PrimeTable>) {\n\t\tthis.title = data.title || '';\n\t\tthis.columns = data.columns || [];\n\t\tthis.rowsPerPageOptions = data.rowsPerPageOptions || [10, 20, 50];\n\t}\n}\n\nexport enum PrimeTableColumnAlignFrozen {\n\tRight = 'right',\n\tLeft = 'left'\n}\n\nexport class PrimeTableColumn {\n\tisFrozen: boolean;\n\tproperty: string;\n\theader: string;\n\tminWidth: string;\n\talignFrozen: PrimeTableColumnAlignFrozen;\n\tconstructor(data: Partial<PrimeTableColumn>) {\n\t\tthis.isFrozen = data.isFrozen || false;\n\t\tthis.property = data.property || '';\n\t\tthis.header = data.header || '';\n\t\tthis.minWidth = data.minWidth || '';\n\t\tthis.alignFrozen = data.alignFrozen || PrimeTableColumnAlignFrozen.Left;\n\t}\n}\n",
+			"constructorObj": {
+				"name": "constructor",
+				"description": "",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"args": [
+					{
+						"name": "data",
+						"type": "Partial<PrimeTable>",
+						"deprecated": false,
+						"deprecationMessage": ""
+					}
+				],
+				"line": 4,
+				"jsdoctags": [
+					{
+						"name": "data",
+						"type": "Partial<PrimeTable>",
+						"deprecated": false,
+						"deprecationMessage": "",
+						"tagName": {
+							"text": "param"
+						}
+					}
+				]
+			},
+			"inputsClass": [],
+			"outputsClass": [],
+			"properties": [
+				{
+					"name": "columns",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "PrimeTableColumn[]",
+					"optional": false,
+					"description": "",
+					"line": 3
+				},
+				{
+					"name": "rowsPerPageOptions",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "number[]",
+					"optional": false,
+					"description": "",
+					"line": 4
+				},
+				{
+					"name": "title",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "string",
+					"optional": false,
+					"description": "",
+					"line": 2
+				}
+			],
+			"methods": [],
+			"indexSignatures": [],
+			"extends": [],
+			"hostBindings": [],
+			"hostListeners": []
+		},
+		{
+			"name": "PrimeTableColumn",
+			"id": "class-PrimeTableColumn-7201f78435dcc1b27733e05216ff10667a421558b5697bf556024b11df2af2c71e0dad9aa53a68f0b2e4d9f1b2971bae75e5a1672da4a01f7a654113dafc1e72",
+			"file": "src/app/presentation/components/prime-table/prime-table.component.model.ts",
+			"deprecated": false,
+			"deprecationMessage": "",
+			"type": "class",
+			"sourceCode": "export class PrimeTable {\n\ttitle: string;\n\tcolumns: PrimeTableColumn[];\n\trowsPerPageOptions: number[];\n\tconstructor(data: Partial<PrimeTable>) {\n\t\tthis.title = data.title || '';\n\t\tthis.columns = data.columns || [];\n\t\tthis.rowsPerPageOptions = data.rowsPerPageOptions || [10, 20, 50];\n\t}\n}\n\nexport enum PrimeTableColumnAlignFrozen {\n\tRight = 'right',\n\tLeft = 'left'\n}\n\nexport class PrimeTableColumn {\n\tisFrozen: boolean;\n\tproperty: string;\n\theader: string;\n\tminWidth: string;\n\talignFrozen: PrimeTableColumnAlignFrozen;\n\tconstructor(data: Partial<PrimeTableColumn>) {\n\t\tthis.isFrozen = data.isFrozen || false;\n\t\tthis.property = data.property || '';\n\t\tthis.header = data.header || '';\n\t\tthis.minWidth = data.minWidth || '';\n\t\tthis.alignFrozen = data.alignFrozen || PrimeTableColumnAlignFrozen.Left;\n\t}\n}\n",
+			"constructorObj": {
+				"name": "constructor",
+				"description": "",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"args": [
+					{
+						"name": "data",
+						"type": "Partial<PrimeTableColumn>",
+						"deprecated": false,
+						"deprecationMessage": ""
+					}
+				],
+				"line": 22,
+				"jsdoctags": [
+					{
+						"name": "data",
+						"type": "Partial<PrimeTableColumn>",
+						"deprecated": false,
+						"deprecationMessage": "",
+						"tagName": {
+							"text": "param"
+						}
+					}
+				]
+			},
+			"inputsClass": [],
+			"outputsClass": [],
+			"properties": [
+				{
+					"name": "alignFrozen",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "PrimeTableColumnAlignFrozen",
+					"optional": false,
+					"description": "",
+					"line": 22
+				},
+				{
+					"name": "header",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "string",
+					"optional": false,
+					"description": "",
+					"line": 20
+				},
+				{
+					"name": "isFrozen",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "boolean",
+					"optional": false,
+					"description": "",
+					"line": 18
+				},
+				{
+					"name": "minWidth",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "string",
+					"optional": false,
+					"description": "",
+					"line": 21
+				},
+				{
+					"name": "property",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "string",
+					"optional": false,
+					"description": "",
+					"line": 19
+				}
+			],
+			"methods": [],
+			"indexSignatures": [],
+			"extends": [],
+			"hostBindings": [],
+			"hostListeners": []
+		}
+	],
+	"directives": [],
+	"components": [
+		{
+			"name": "AboutComponent",
+			"id": "component-AboutComponent-89f59205d7d1e3d3a68412159e96f7e675d7d26eb55e0114599b1034664ef2f222552dbcf191939f3b2373abcaeb81873e508bd5189f26bec82807c4fa758374",
+			"file": "src/app/presentation/pages/about/about.component.ts",
+			"encapsulation": [],
+			"entryComponents": [],
+			"inputs": [],
+			"outputs": [],
+			"providers": [],
+			"selector": "app-about",
+			"styleUrls": [],
+			"styles": [],
+			"templateUrl": ["./about.component.html"],
+			"viewProviders": [],
+			"hostDirectives": [],
+			"inputsClass": [],
+			"outputsClass": [],
+			"propertiesClass": [],
+			"methodsClass": [],
+			"deprecated": false,
+			"deprecationMessage": "",
+			"hostBindings": [],
+			"hostListeners": [],
+			"standalone": true,
+			"imports": [
+				{
+					"name": "VirtualScrollTableComponent",
+					"type": "component"
+				}
+			],
+			"description": "",
+			"rawdescription": "\n",
+			"type": "component",
+			"sourceCode": "import { Component } from '@angular/core';\nimport { VirtualScrollTableComponent } from '@components/virtual-scroll-table/virtual-scroll-table.component';\n\n@Component({\n\tselector: 'app-about',\n\tstandalone: true,\n\timports: [VirtualScrollTableComponent],\n\ttemplateUrl: './about.component.html',\n\tstyleUrl: './about.component.scss'\n})\nexport class AboutComponent {}\n",
+			"styleUrl": "./about.component.scss",
+			"assetsDirs": [],
+			"styleUrlsData": "",
+			"stylesData": "",
+			"extends": [],
+			"templateData": "<p>about works!</p>\n<app-virtual-scroll-table></app-virtual-scroll-table>\n"
+		},
+		{
+			"name": "AppComponent",
+			"id": "component-AppComponent-95b8728e7745909662ecfd0964f7166bb0cbba5d6913c080eb0cc9b9bba0c0cf0ce7c1ad2b1f4af7107cd4ff03a7276408e2deee7f4c10f376f37693d7dc1f5f",
+			"file": "src/app/presentation/app.component.ts",
+			"encapsulation": [],
+			"entryComponents": [],
+			"inputs": [],
+			"outputs": [],
+			"providers": [],
+			"selector": "app-root",
+			"styleUrls": [],
+			"styles": [],
+			"templateUrl": ["./app.component.html"],
+			"viewProviders": [],
+			"hostDirectives": [],
+			"inputsClass": [],
+			"outputsClass": [],
+			"propertiesClass": [
+				{
+					"name": "title",
+					"defaultValue": "'angular17p'",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "string",
+					"optional": false,
+					"description": "",
+					"line": 13
+				}
+			],
+			"methodsClass": [],
+			"deprecated": false,
+			"deprecationMessage": "",
+			"hostBindings": [],
+			"hostListeners": [],
+			"standalone": true,
+			"imports": [
+				{
+					"name": "CommonModule",
+					"type": "module"
+				},
+				{
+					"name": "RouterOutlet"
+				}
+			],
+			"description": "",
+			"rawdescription": "\n",
+			"type": "component",
+			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n\tselector: 'app-root',\n\tstandalone: true,\n\timports: [CommonModule, RouterOutlet],\n\ttemplateUrl: './app.component.html',\n\tstyleUrl: './app.component.scss'\n})\nexport class AppComponent {\n\ttitle = 'angular17p';\n}\n",
+			"styleUrl": "./app.component.scss",
+			"assetsDirs": [],
+			"styleUrlsData": "",
+			"stylesData": "",
+			"extends": [],
+			"templateData": "<router-outlet></router-outlet>\n"
+		},
+		{
+			"name": "HomeComponent",
+			"id": "component-HomeComponent-d36f22451c969d5ec80b6b7588067405f5a893a76eff449c996a1f3af4489013ba9ba5de3c26be6222f90c05a9cfdc8b331c3fa51a716f3f82481f6c5e7d8644",
+			"file": "src/app/presentation/pages/home/home.component.ts",
+			"encapsulation": [],
+			"entryComponents": [],
+			"inputs": [],
+			"outputs": [],
+			"providers": [],
+			"selector": "app-home",
+			"styleUrls": [],
+			"styles": [],
+			"templateUrl": ["./home.component.html"],
+			"viewProviders": [],
+			"hostDirectives": [],
+			"inputsClass": [],
+			"outputsClass": [],
+			"propertiesClass": [
+				{
+					"name": "dataInput",
+					"defaultValue": "signal<PrimeTable>(\n\t\tnew PrimeTable({\n\t\t\ttitle: 'Test',\n\t\t\tcolumns: [\n\t\t\t\tnew PrimeTableColumn({ property: 'code', header: 'Code', isFrozen: true }),\n\t\t\t\tnew PrimeTableColumn({ property: 'lastname', header: 'Lastname', isFrozen: false }),\n\t\t\t\tnew PrimeTableColumn({ property: 'name', header: 'Name', isFrozen: false }),\n\t\t\t\tnew PrimeTableColumn({ property: 'age', header: 'Age', isFrozen: false }),\n\t\t\t\tnew PrimeTableColumn({ property: 'email', header: 'Email', isFrozen: false }),\n\t\t\t\tnew PrimeTableColumn({ property: 'address', header: 'Address', isFrozen: false })\n\t\t\t]\n\t\t})\n\t)",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"optional": false,
+					"description": "",
+					"line": 13,
+					"modifierKind": [125]
+				}
+			],
+			"methodsClass": [],
+			"deprecated": false,
+			"deprecationMessage": "",
+			"hostBindings": [],
+			"hostListeners": [],
+			"standalone": true,
+			"imports": [
+				{
+					"name": "PrimeTableComponent",
+					"type": "component"
+				}
+			],
+			"description": "",
+			"rawdescription": "\n",
+			"type": "component",
+			"sourceCode": "import { Component, signal } from '@angular/core';\nimport { PrimeTableComponent } from '@components/prime-table/prime-table.component';\nimport { PrimeTableColumn, PrimeTable } from '@components/prime-table/prime-table.component.model';\n\n@Component({\n\tselector: 'app-home',\n\tstandalone: true,\n\timports: [PrimeTableComponent],\n\ttemplateUrl: './home.component.html',\n\tstyleUrl: './home.component.scss'\n})\nexport class HomeComponent {\n\tpublic dataInput = signal<PrimeTable>(\n\t\tnew PrimeTable({\n\t\t\ttitle: 'Test',\n\t\t\tcolumns: [\n\t\t\t\tnew PrimeTableColumn({ property: 'code', header: 'Code', isFrozen: true }),\n\t\t\t\tnew PrimeTableColumn({ property: 'lastname', header: 'Lastname', isFrozen: false }),\n\t\t\t\tnew PrimeTableColumn({ property: 'name', header: 'Name', isFrozen: false }),\n\t\t\t\tnew PrimeTableColumn({ property: 'age', header: 'Age', isFrozen: false }),\n\t\t\t\tnew PrimeTableColumn({ property: 'email', header: 'Email', isFrozen: false }),\n\t\t\t\tnew PrimeTableColumn({ property: 'address', header: 'Address', isFrozen: false })\n\t\t\t]\n\t\t})\n\t);\n}\n",
+			"styleUrl": "./home.component.scss",
+			"assetsDirs": [],
+			"styleUrlsData": "",
+			"stylesData": "",
+			"extends": [],
+			"templateData": "<div style=\"height: 70dvh\">\n\t<app-prime-table [input]=\"dataInput()\" />\n</div>\n"
+		},
+		{
+			"name": "PrimeTableComponent",
+			"id": "component-PrimeTableComponent-9a6898eafe69d93135520f7f1f94f12b8e64738ec2f30c14c414f97b0721a78fc1bec3c407a842473d3372e259ccf57ac6d3150fadc187060c570e268b2a2aaf",
+			"file": "src/app/presentation/components/prime-table/prime-table.component.ts",
+			"encapsulation": [],
+			"entryComponents": [],
+			"inputs": [],
+			"outputs": [],
+			"providers": [],
+			"selector": "app-prime-table",
+			"styleUrls": [],
+			"styles": [],
+			"templateUrl": ["./prime-table.component.html"],
+			"viewProviders": [],
+			"hostDirectives": [],
+			"inputsClass": [],
+			"outputsClass": [],
+			"propertiesClass": [
+				{
+					"name": "input",
+					"defaultValue": "input(new PrimeTable({}))",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"optional": false,
+					"description": "",
+					"line": 15,
+					"modifierKind": [125]
+				},
+				{
+					"name": "products",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "[]",
+					"optional": false,
+					"description": "",
+					"line": 14
+				}
+			],
+			"methodsClass": [
+				{
+					"name": "ngOnInit",
+					"args": [],
+					"optional": false,
+					"returnType": "void",
+					"typeParameters": [],
+					"line": 17,
+					"deprecated": false,
+					"deprecationMessage": ""
+				}
+			],
+			"deprecated": false,
+			"deprecationMessage": "",
+			"hostBindings": [],
+			"hostListeners": [],
+			"standalone": true,
+			"imports": [
+				{
+					"name": "TableModule",
+					"type": "module"
+				},
+				{
+					"name": "CommonModule",
+					"type": "module"
+				}
+			],
+			"description": "",
+			"rawdescription": "\n",
+			"type": "component",
+			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, OnInit, input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\nimport { PrimeTable } from './prime-table.component.model';\n\n@Component({\n\tselector: 'app-prime-table',\n\tstandalone: true,\n\timports: [TableModule, CommonModule],\n\ttemplateUrl: './prime-table.component.html',\n\tstyleUrl: './prime-table.component.scss'\n})\nexport class PrimeTableComponent implements OnInit {\n\tproducts!: unknown[];\n\tpublic input = input(new PrimeTable({}));\n\n\tngOnInit(): void {\n\t\tthis.products = [\n\t\t\t{ code: 'code1', lastname: 'Doe', name: 'John', age: 30, email: 'john.doe1@example.com', address: '123 Main St' },\n\t\t\t{\n\t\t\t\tcode: 'code2',\n\t\t\t\tlastname: 'Smith',\n\t\t\t\tname: 'Jane',\n\t\t\t\tage: 25,\n\t\t\t\temail: 'jane.smith@example.com',\n\t\t\t\taddress: '456 Elm St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code3',\n\t\t\t\tlastname: 'Johnson',\n\t\t\t\tname: 'Jim',\n\t\t\t\tage: 27,\n\t\t\t\temail: 'jim.johnson@example.com',\n\t\t\t\taddress: '789 Maple St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code4',\n\t\t\t\tlastname: 'Williams',\n\t\t\t\tname: 'Jake',\n\t\t\t\tage: 35,\n\t\t\t\temail: 'jake.williams@example.com',\n\t\t\t\taddress: '101 Oak St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code5',\n\t\t\t\tlastname: 'Brown',\n\t\t\t\tname: 'Jill',\n\t\t\t\tage: 28,\n\t\t\t\temail: 'jill.brown@example.com',\n\t\t\t\taddress: '202 Pine St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code6',\n\t\t\t\tlastname: 'Davis',\n\t\t\t\tname: 'Jen',\n\t\t\t\tage: 32,\n\t\t\t\temail: 'jen.davis@example.com',\n\t\t\t\taddress: '303 Cedar St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code7',\n\t\t\t\tlastname: 'Miller',\n\t\t\t\tname: 'Jack',\n\t\t\t\tage: 31,\n\t\t\t\temail: 'jack.miller@example.com',\n\t\t\t\taddress: '404 Birch St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code8',\n\t\t\t\tlastname: 'Wilson',\n\t\t\t\tname: 'Jerry',\n\t\t\t\tage: 29,\n\t\t\t\temail: 'jerry.wilson@example.com',\n\t\t\t\taddress: '505 Spruce St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code9',\n\t\t\t\tlastname: 'Moore',\n\t\t\t\tname: 'Jess',\n\t\t\t\tage: 26,\n\t\t\t\temail: 'jess.moore@example.com',\n\t\t\t\taddress: '606 Cherry St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code10',\n\t\t\t\tlastname: 'Taylor',\n\t\t\t\tname: 'Joel',\n\t\t\t\tage: 33,\n\t\t\t\temail: 'joel.taylor@example.com',\n\t\t\t\taddress: '707 Aspen St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code11',\n\t\t\t\tlastname: 'Anderson',\n\t\t\t\tname: 'Jenny',\n\t\t\t\tage: 34,\n\t\t\t\temail: 'jenny.anderson@example.com',\n\t\t\t\taddress: '808 Alder St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code12',\n\t\t\t\tlastname: 'Thomas',\n\t\t\t\tname: 'James',\n\t\t\t\tage: 24,\n\t\t\t\temail: 'james.thomas@example.com',\n\t\t\t\taddress: '909 Willow St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code13',\n\t\t\t\tlastname: 'Jackson',\n\t\t\t\tname: 'Julia',\n\t\t\t\tage: 22,\n\t\t\t\temail: 'julia.jackson@example.com',\n\t\t\t\taddress: '1010 Fir St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code14',\n\t\t\t\tlastname: 'White',\n\t\t\t\tname: 'Jacob',\n\t\t\t\tage: 21,\n\t\t\t\temail: 'jacob.white@example.com',\n\t\t\t\taddress: '1111 Redwood St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code15',\n\t\t\t\tlastname: 'Harris',\n\t\t\t\tname: 'Judy',\n\t\t\t\tage: 29,\n\t\t\t\temail: 'judy.harris@example.com',\n\t\t\t\taddress: '1212 Cypress St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code16',\n\t\t\t\tlastname: 'Martin',\n\t\t\t\tname: 'Jeff',\n\t\t\t\tage: 36,\n\t\t\t\temail: 'jeff.martin@example.com',\n\t\t\t\taddress: '1313 Sequoia St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code17',\n\t\t\t\tlastname: 'Thompson',\n\t\t\t\tname: 'Jill',\n\t\t\t\tage: 37,\n\t\t\t\temail: 'jill.thompson@example.com',\n\t\t\t\taddress: '1414 Oak St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code18',\n\t\t\t\tlastname: 'Garcia',\n\t\t\t\tname: 'Jon',\n\t\t\t\tage: 38,\n\t\t\t\temail: 'jon.garcia@example.com',\n\t\t\t\taddress: '1515 Maple St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code19',\n\t\t\t\tlastname: 'Martinez',\n\t\t\t\tname: 'Jenny',\n\t\t\t\tage: 39,\n\t\t\t\temail: 'jenny.martinez@example.com',\n\t\t\t\taddress: '1616 Birch St'\n\t\t\t},\n\t\t\t{\n\t\t\t\tcode: 'code20',\n\t\t\t\tlastname: 'Rodriguez',\n\t\t\t\tname: 'Jim',\n\t\t\t\tage: 40,\n\t\t\t\temail: 'jim.rodriguez@example.com',\n\t\t\t\taddress: '1717 Pine St'\n\t\t\t}\n\t\t];\n\t}\n}\n",
+			"styleUrl": "./prime-table.component.scss",
+			"assetsDirs": [],
+			"styleUrlsData": "",
+			"stylesData": "",
+			"extends": [],
+			"implements": ["OnInit"],
+			"templateData": "<p-table\n\t[columns]=\"input().columns\"\n\t[value]=\"products\"\n\t[rows]=\"input().rowsPerPageOptions[0]\"\n\t[rowsPerPageOptions]=\"input().rowsPerPageOptions\"\n\t[paginator]=\"true\"\n\t[scrollable]=\"true\"\n\tstyleClass=\"prime-table-container\"\n>\n\t<!-- #region Header -->\n\t<ng-template\n\t\tpTemplate=\"header\"\n\t\tlet-columns\n\t>\n\t\t<tr>\n\t\t\t@for (column of input().columns; track $index) {\n\t\t\t\t<th\n\t\t\t\t\tpFrozenColumn\n\t\t\t\t\talignFrozen=\"{{ column.alignFrozen }}\"\n\t\t\t\t\t[frozen]=\"column.isFrozen\"\n\t\t\t\t\t[ngStyle]=\"{ 'min-width': column.minWidth }\"\n\t\t\t\t>\n\t\t\t\t\t{{ column.header }}\n\t\t\t\t</th>\n\t\t\t}\n\t\t</tr>\n\t</ng-template>\n\t<!-- #endregion Header -->\n\n\t<!-- #region Body -->\n\t<ng-template\n\t\tpTemplate=\"body\"\n\t\tlet-rowData\n\t\tlet-columns=\"columns\"\n\t>\n\t\t<tr>\n\t\t\t@for (column of input().columns; track $index) {\n\t\t\t\t<td\n\t\t\t\t\tpFrozenColumn\n\t\t\t\t\talignFrozen=\"{{ column.alignFrozen }}\"\n\t\t\t\t\t[frozen]=\"column.isFrozen\"\n\t\t\t\t\t[ngStyle]=\"{ 'min-width': column.minWidth }\"\n\t\t\t\t>\n\t\t\t\t\t{{ rowData[column.property] }}\n\t\t\t\t</td>\n\t\t\t}\n\t\t</tr>\n\t</ng-template>\n\t<!-- #endregion Body -->\n</p-table>\n"
+		}
+	],
+	"modules": [],
+	"miscellaneous": {
+		"variables": [
+			{
+				"name": "appConfig",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "src/app/presentation/app.config.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "ApplicationConfig",
+				"defaultValue": "{\n\tproviders: [provideRouter(routes), provideClientHydration(), provideAnimations()]\n}"
+			},
+			{
+				"name": "bootstrap",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "src/main.server.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "() => bootstrapApplication(AppComponent, config)"
+			},
+			{
+				"name": "config",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "src/app/presentation/app.config.server.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "mergeApplicationConfig(appConfig, serverConfig)"
+			},
+			{
+				"name": "serverConfig",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "src/app/presentation/app.config.server.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "ApplicationConfig",
+				"defaultValue": "{\n\tproviders: [provideServerRendering()]\n}"
+			}
+		],
+		"functions": [],
+		"typealiases": [],
+		"enumerations": [
+			{
+				"name": "PrimeTableColumnAlignFrozen",
+				"childs": [
+					{
+						"name": "Right",
+						"deprecated": false,
+						"deprecationMessage": "",
+						"value": "right"
+					},
+					{
+						"name": "Left",
+						"deprecated": false,
+						"deprecationMessage": "",
+						"value": "left"
+					}
+				],
+				"ctype": "miscellaneous",
+				"subtype": "enum",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"description": "",
+				"file": "src/app/presentation/components/prime-table/prime-table.component.model.ts"
+			}
+		],
+		"groupedVariables": {
+			"src/app/presentation/app.config.ts": [
+				{
+					"name": "appConfig",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "src/app/presentation/app.config.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "ApplicationConfig",
+					"defaultValue": "{\n\tproviders: [provideRouter(routes), provideClientHydration(), provideAnimations()]\n}"
+				}
+			],
+			"src/main.server.ts": [
+				{
+					"name": "bootstrap",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "src/main.server.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "() => bootstrapApplication(AppComponent, config)"
+				}
+			],
+			"src/app/presentation/app.config.server.ts": [
+				{
+					"name": "config",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "src/app/presentation/app.config.server.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "mergeApplicationConfig(appConfig, serverConfig)"
+				},
+				{
+					"name": "serverConfig",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "src/app/presentation/app.config.server.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "ApplicationConfig",
+					"defaultValue": "{\n\tproviders: [provideServerRendering()]\n}"
+				}
+			]
+		},
+		"groupedFunctions": {},
+		"groupedEnumerations": {
+			"src/app/presentation/components/prime-table/prime-table.component.model.ts": [
+				{
+					"name": "PrimeTableColumnAlignFrozen",
+					"childs": [
+						{
+							"name": "Right",
+							"deprecated": false,
+							"deprecationMessage": "",
+							"value": "right"
+						},
+						{
+							"name": "Left",
+							"deprecated": false,
+							"deprecationMessage": "",
+							"value": "left"
+						}
+					],
+					"ctype": "miscellaneous",
+					"subtype": "enum",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"description": "",
+					"file": "src/app/presentation/components/prime-table/prime-table.component.model.ts"
+				}
+			]
+		},
+		"groupedTypeAliases": {}
+	},
+	"routes": [],
+	"coverage": {
+		"count": 0,
+		"status": "low",
+		"files": [
+			{
+				"filePath": "src/app/presentation/app.component.ts",
+				"type": "component",
+				"linktype": "component",
+				"name": "AppComponent",
+				"coveragePercent": 0,
+				"coverageCount": "0/2",
+				"status": "low"
+			},
+			{
+				"filePath": "src/app/presentation/app.config.server.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "config",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "src/app/presentation/app.config.server.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "serverConfig",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "src/app/presentation/app.config.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "appConfig",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "src/app/presentation/components/prime-table/prime-table.component.model.ts",
+				"type": "class",
+				"linktype": "classe",
+				"name": "PrimeTable",
+				"coveragePercent": 0,
+				"coverageCount": "0/5",
+				"status": "low"
+			},
+			{
+				"filePath": "src/app/presentation/components/prime-table/prime-table.component.model.ts",
+				"type": "class",
+				"linktype": "classe",
+				"name": "PrimeTableColumn",
+				"coveragePercent": 0,
+				"coverageCount": "0/7",
+				"status": "low"
+			},
+			{
+				"filePath": "src/app/presentation/components/prime-table/prime-table.component.ts",
+				"type": "component",
+				"linktype": "component",
+				"name": "PrimeTableComponent",
+				"coveragePercent": 0,
+				"coverageCount": "0/4",
+				"status": "low"
+			},
+			{
+				"filePath": "src/app/presentation/pages/about/about.component.ts",
+				"type": "component",
+				"linktype": "component",
+				"name": "AboutComponent",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "src/app/presentation/pages/home/home.component.ts",
+				"type": "component",
+				"linktype": "component",
+				"name": "HomeComponent",
+				"coveragePercent": 0,
+				"coverageCount": "0/2",
+				"status": "low"
+			},
+			{
+				"filePath": "src/main.server.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "bootstrap",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			}
+		]
+	}
+}
