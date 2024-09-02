@@ -12,6 +12,7 @@ import { PrimeTableComponent } from './prime-table.component';
 // const Template: Story<PrimeTableComponent> =
 
 const meta: Meta<PrimeTableComponent> = {
+	title: 'Components/Generics',
 	component: PrimeTableComponent,
 	decorators: [
 		// Apply metadata to all stories
