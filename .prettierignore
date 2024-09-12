@@ -7,3 +7,5 @@ pnpm-lock.yaml
 .husky/*
 .prettierignore
 .gitignore
+Dockerfile
+.dockerignore

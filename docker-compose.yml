@@ -1,0 +1,15 @@
+services:
+  angular-primeng-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4200:80'
+
+    networks:
+      - angular-primeng-app-network
+    restart: always
+
+networks:
+  angular-primeng-app-network:
+    driver: bridge
