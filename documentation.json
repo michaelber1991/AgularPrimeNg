@@ -170,7 +170,7 @@
 	"components": [
 		{
 			"name": "AboutComponent",
-			"id": "component-AboutComponent-89f59205d7d1e3d3a68412159e96f7e675d7d26eb55e0114599b1034664ef2f222552dbcf191939f3b2373abcaeb81873e508bd5189f26bec82807c4fa758374",
+			"id": "component-AboutComponent-758de930efda9508fea080c1b369e16df5c3ec7f9172c757c3239180989ecbb582ea9038f0361e5dc77be3a3af22d227b99a6a6d5902052a9a8a87f549e524e1",
 			"file": "src/app/presentation/pages/about/about.component.ts",
 			"encapsulation": [],
 			"entryComponents": [],
@@ -192,22 +192,17 @@
 			"hostBindings": [],
 			"hostListeners": [],
 			"standalone": true,
-			"imports": [
-				{
-					"name": "VirtualScrollTableComponent",
-					"type": "component"
-				}
-			],
+			"imports": [],
 			"description": "",
 			"rawdescription": "\n",
 			"type": "component",
-			"sourceCode": "import { Component } from '@angular/core';\nimport { VirtualScrollTableComponent } from '@components/virtual-scroll-table/virtual-scroll-table.component';\n\n@Component({\n\tselector: 'app-about',\n\tstandalone: true,\n\timports: [VirtualScrollTableComponent],\n\ttemplateUrl: './about.component.html',\n\tstyleUrl: './about.component.scss'\n})\nexport class AboutComponent {}\n",
+			"sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n\tselector: 'app-about',\n\tstandalone: true,\n\timports: [],\n\ttemplateUrl: './about.component.html',\n\tstyleUrl: './about.component.scss'\n})\nexport class AboutComponent {}\n",
 			"styleUrl": "./about.component.scss",
 			"assetsDirs": [],
 			"styleUrlsData": "",
 			"stylesData": "",
 			"extends": [],
-			"templateData": "<p>about works!</p>\n<app-virtual-scroll-table></app-virtual-scroll-table>\n"
+			"templateData": "<p>about works!</p>\n"
 		},
 		{
 			"name": "AppComponent",
