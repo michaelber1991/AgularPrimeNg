@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { PrimeTableComponent } from '@components/prime-table/prime-table.component';
-import { PrimeTableColumn, PrimeTable } from '@components/prime-table/prime-table.component.model';
+import { PrimeTable, PrimeTableColumn } from '@components/prime-table/prime-table.component.model';
 
 @Component({
 	selector: 'app-home',
