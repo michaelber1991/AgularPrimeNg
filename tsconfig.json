@@ -21,7 +21,8 @@
 		"lib": ["ES2022", "dom"],
 		"baseUrl": "src",
 		"paths": {
-			"@components/*": ["app/presentation/shared/components/*"]
+			"@components/*": ["app/presentation/shared/components/*"],
+			"@assets/*": ["app/assets/*"]
 		}
 	},
 	"angularCompilerOptions": {

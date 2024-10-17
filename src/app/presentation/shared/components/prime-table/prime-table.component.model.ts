@@ -1,8 +1,11 @@
-export class PrimeTable {
+import { signal } from '@angular/core';
+export class PrimeTable<T> {
 	title: string;
 	columns: PrimeTableColumn[];
+	values = signal<T[]>([]);
 	rowsPerPageOptions: number[];
-	constructor(data: Partial<PrimeTable>) {
+
+	constructor(data: Partial<PrimeTable<T>>) {
 		this.title = data.title || '';
 		this.columns = data.columns || [];
 		this.rowsPerPageOptions = data.rowsPerPageOptions || [10, 20, 50];
