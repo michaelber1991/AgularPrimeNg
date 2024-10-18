@@ -1,14 +1,24 @@
 import { signal } from '@angular/core';
+
+export type PrimeTableValues<T> = {
+	data: T[];
+	totalRecords: number;
+};
+
 export class PrimeTable<T> {
 	title: string;
 	columns: PrimeTableColumn[];
-	values = signal<T[]>([]);
+	values = signal<PrimeTableValues<T>>({ data: [], totalRecords: 0 });
+	totalRecords: number;
 	rowsPerPageOptions: number[];
+	onLazyload: () => Promise<void>;
 
 	constructor(data: Partial<PrimeTable<T>>) {
 		this.title = data.title || '';
 		this.columns = data.columns || [];
 		this.rowsPerPageOptions = data.rowsPerPageOptions || [10, 20, 50];
+		this.totalRecords = data.totalRecords || 0;
+		this.onLazyload = data.onLazyload ?? (async (): Promise<void> => {});
 	}
 }
 

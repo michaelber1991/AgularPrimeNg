@@ -1,10 +1,13 @@
 <p-table
 	[columns]="input().columns"
-	[value]="input().values()"
+	[value]="input().values().data"
 	[rows]="input().rowsPerPageOptions[0]"
 	[rowsPerPageOptions]="input().rowsPerPageOptions"
 	[paginator]="true"
 	[scrollable]="true"
+	[lazy]="true"
+	(onLazyLoad)="input().onLazyload()"
+	[totalRecords]="input().values().totalRecords"
 	styleClass="prime-table-container"
 >
 	<!-- #region Header -->

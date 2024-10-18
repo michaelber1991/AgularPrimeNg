@@ -22,7 +22,8 @@
 		"baseUrl": "src",
 		"paths": {
 			"@components/*": ["app/presentation/shared/components/*"],
-			"@assets/*": ["app/assets/*"]
+			"@assets/*": ["app/assets/*"],
+			"@shared/*": ["app/presentation/shared/*"]
 		}
 	},
 	"angularCompilerOptions": {

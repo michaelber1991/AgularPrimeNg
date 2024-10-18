@@ -1,6 +1,7 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { PrimeTableComponent } from '@components/prime-table/prime-table.component';
 import { PrimeTable, PrimeTableColumn } from '@components/prime-table/prime-table.component.model';
+import { ContentLayoutComponent } from '@shared/layouts/content-layout/content-layout.component';
 
 type Product = {
 	code: string;
@@ -14,11 +15,12 @@ type Product = {
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [PrimeTableComponent],
+	imports: [PrimeTableComponent, ContentLayoutComponent],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+	public aaa = 0;
 	public dataInput = signal<PrimeTable<Product>>(
 		new PrimeTable<Product>({
 			title: 'Test',
@@ -29,85 +31,22 @@ export class HomeComponent implements OnInit {
 				new PrimeTableColumn({ property: 'age', header: 'Age', isFrozen: false }),
 				new PrimeTableColumn({ property: 'email', header: 'Email', isFrozen: false }),
 				new PrimeTableColumn({ property: 'address', header: 'Address', isFrozen: false })
-			]
+			],
+			onLazyload: async (): Promise<void> => {
+				const a = this.aaa == 0 ? this.page1() : this.page2();
+				this.dataInput().values.update(() => {
+					return {
+						data: a,
+						totalRecords: 20
+					};
+				});
+				this.aaa++;
+			}
 		})
 	);
 
-	ngOnInit(): void {
-		this.dataInput().values.set([
-			{ code: 'code1', lastname: 'Doe', name: 'John', age: 30, email: 'john.doe1@example.com', address: '123 Main St' },
-			{
-				code: 'code2',
-				lastname: 'Smith',
-				name: 'Jane',
-				age: 25,
-				email: 'jane.smith@example.com',
-				address: '456 Elm St'
-			},
-			{
-				code: 'code3',
-				lastname: 'Johnson',
-				name: 'Jim',
-				age: 27,
-				email: 'jim.johnson@example.com',
-				address: '789 Maple St'
-			},
-			{
-				code: 'code4',
-				lastname: 'Williams',
-				name: 'Jake',
-				age: 35,
-				email: 'jake.williams@example.com',
-				address: '101 Oak St'
-			},
-			{
-				code: 'code5',
-				lastname: 'Brown',
-				name: 'Jill',
-				age: 28,
-				email: 'jill.brown@example.com',
-				address: '202 Pine St'
-			},
-			{
-				code: 'code6',
-				lastname: 'Davis',
-				name: 'Jen',
-				age: 32,
-				email: 'jen.davis@example.com',
-				address: '303 Cedar St'
-			},
-			{
-				code: 'code7',
-				lastname: 'Miller',
-				name: 'Jack',
-				age: 31,
-				email: 'jack.miller@example.com',
-				address: '404 Birch St'
-			},
-			{
-				code: 'code8',
-				lastname: 'Wilson',
-				name: 'Jerry',
-				age: 29,
-				email: 'jerry.wilson@example.com',
-				address: '505 Spruce St'
-			},
-			{
-				code: 'code9',
-				lastname: 'Moore',
-				name: 'Jess',
-				age: 26,
-				email: 'jess.moore@example.com',
-				address: '606 Cherry St'
-			},
-			{
-				code: 'code10',
-				lastname: 'Taylor',
-				name: 'Joel',
-				age: 33,
-				email: 'joel.taylor@example.com',
-				address: '707 Aspen St'
-			},
+	private page1(): Product[] {
+		return [
 			{
 				code: 'code11',
 				lastname: 'Anderson',
@@ -188,6 +127,91 @@ export class HomeComponent implements OnInit {
 				email: 'jim.rodriguez@example.com',
 				address: '1717 Pine St'
 			}
-		]);
+		];
+	}
+
+	private page2(): Product[] {
+		return [
+			{
+				code: 'code1',
+				lastname: 'Doe',
+				name: 'John',
+				age: 30,
+				email: 'john.doe1@example.com',
+				address: '123 Main St'
+			},
+			{
+				code: 'code2',
+				lastname: 'Smith',
+				name: 'Jane',
+				age: 25,
+				email: 'jane.smith@example.com',
+				address: '456 Elm St'
+			},
+			{
+				code: 'code3',
+				lastname: 'Johnson',
+				name: 'Jim',
+				age: 27,
+				email: 'jim.johnson@example.com',
+				address: '789 Maple St'
+			},
+			{
+				code: 'code4',
+				lastname: 'Williams',
+				name: 'Jake',
+				age: 35,
+				email: 'jake.williams@example.com',
+				address: '101 Oak St'
+			},
+			{
+				code: 'code5',
+				lastname: 'Brown',
+				name: 'Jill',
+				age: 28,
+				email: 'jill.brown@example.com',
+				address: '202 Pine St'
+			},
+			{
+				code: 'code6',
+				lastname: 'Davis',
+				name: 'Jen',
+				age: 32,
+				email: 'jen.davis@example.com',
+				address: '303 Cedar St'
+			},
+			{
+				code: 'code7',
+				lastname: 'Miller',
+				name: 'Jack',
+				age: 31,
+				email: 'jack.miller@example.com',
+				address: '404 Birch St'
+			},
+			{
+				code: 'code8',
+				lastname: 'Wilson',
+				name: 'Jerry',
+				age: 29,
+				email: 'jerry.wilson@example.com',
+				address: '505 Spruce St'
+			},
+			{
+				code: 'code9',
+				lastname: 'Moore',
+				name: 'Jess',
+				age: 26,
+				email: 'jess.moore@example.com',
+				address: '606 Cherry St'
+			},
+			{
+				code: 'code10',
+				lastname: 'Taylor',
+				name: 'Joel',
+				age: 33,
+				email: 'joel.taylor@example.com',
+				address: '707 Aspen St'
+			}
+		];
 	}
 }
