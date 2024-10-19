@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { PrimeTableComponent } from '@components/prime-table/prime-table.component';
-import { PrimeTable, PrimeTableColumn } from '@components/prime-table/prime-table.component.model';
+import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
+import { PrimeTable, PrimeTableColumn } from '@shared/components/prime-table/prime-table.component.model';
 import { ContentLayoutComponent } from '@shared/layouts/content-layout/content-layout.component';
 
 type Product = {
