@@ -1,5 +1,5 @@
-import { PrimeTableComponent } from '@components/prime-table/prime-table.component';
-import { PrimeTable, PrimeTableColumn } from '@components/prime-table/prime-table.component.model';
+import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
+import { PrimeTable, PrimeTableColumn } from '@shared/components/prime-table/prime-table.component.model';
 import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
 
 // Meta configurando el componente
