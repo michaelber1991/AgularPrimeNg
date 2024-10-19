@@ -1,53 +1,55 @@
-<p-table
-	[columns]="input().columns"
-	[value]="input().values().data"
-	[rows]="input().rowsPerPageOptions[0]"
-	[rowsPerPageOptions]="input().rowsPerPageOptions"
-	[paginator]="true"
-	[scrollable]="true"
-	[lazy]="true"
-	(onLazyLoad)="input().onLazyload()"
-	[totalRecords]="input().values().totalRecords"
-	styleClass="prime-table-container"
->
-	<!-- #region Header -->
-	<ng-template
-		pTemplate="header"
-		let-columns
+<app-card-layout>
+	<p-table
+		[columns]="input().columns"
+		[value]="input().values().data"
+		[rows]="input().rowsPerPageOptions[0]"
+		[rowsPerPageOptions]="input().rowsPerPageOptions"
+		[paginator]="true"
+		[scrollable]="true"
+		[lazy]="true"
+		(onLazyLoad)="input().onLazyload()"
+		[totalRecords]="input().values().totalRecords"
+		styleClass="prime-table-container"
 	>
-		<tr>
-			@for (column of input().columns; track $index) {
-				<th
-					pFrozenColumn
-					alignFrozen="{{ column.alignFrozen }}"
-					[frozen]="column.isFrozen"
-					[ngStyle]="{ 'min-width': column.minWidth }"
-				>
-					{{ column.header }}
-				</th>
-			}
-		</tr>
-	</ng-template>
-	<!-- #endregion Header -->
+		<!-- #region Header -->
+		<ng-template
+			pTemplate="header"
+			let-columns
+		>
+			<tr>
+				@for (column of input().columns; track $index) {
+					<th
+						pFrozenColumn
+						alignFrozen="{{ column.alignFrozen }}"
+						[frozen]="column.isFrozen"
+						[ngStyle]="{ 'min-width': column.minWidth }"
+					>
+						{{ column.header }}
+					</th>
+				}
+			</tr>
+		</ng-template>
+		<!-- #endregion Header -->
 
-	<!-- #region Body -->
-	<ng-template
-		pTemplate="body"
-		let-rowData
-		let-columns="columns"
-	>
-		<tr>
-			@for (column of input().columns; track $index) {
-				<td
-					pFrozenColumn
-					alignFrozen="{{ column.alignFrozen }}"
-					[frozen]="column.isFrozen"
-					[ngStyle]="{ 'min-width': column.minWidth }"
-				>
-					{{ rowData[column.property] }}
-				</td>
-			}
-		</tr>
-	</ng-template>
-	<!-- #endregion Body -->
-</p-table>
+		<!-- #region Body -->
+		<ng-template
+			pTemplate="body"
+			let-rowData
+			let-columns="columns"
+		>
+			<tr>
+				@for (column of input().columns; track $index) {
+					<td
+						pFrozenColumn
+						alignFrozen="{{ column.alignFrozen }}"
+						[frozen]="column.isFrozen"
+						[ngStyle]="{ 'min-width': column.minWidth }"
+					>
+						{{ rowData[column.property] }}
+					</td>
+				}
+			</tr>
+		</ng-template>
+		<!-- #endregion Body -->
+	</p-table>
+</app-card-layout>

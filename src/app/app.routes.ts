@@ -4,6 +4,6 @@ export const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{
 		path: 'home',
-		loadComponent: () => import('./modules/home/presentation/pages/home.component').then((c) => c.HomeComponent)
+		loadChildren: () => import('./modules/home/presentation/pages/home.routes').then((c) => c.routes)
 	}
 ];
