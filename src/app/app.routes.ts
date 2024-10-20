@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
+import { AppRoutes } from '@shared/routes/routes';
 
 export const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{
-		path: 'home',
+		path: AppRoutes.HOME,
 		loadChildren: () => import('./modules/home/presentation/pages/home.routes').then((c) => c.routes)
 	}
 ];

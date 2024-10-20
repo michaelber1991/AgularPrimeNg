@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
 import { PrimeTable, PrimeTableColumn } from '@shared/components/prime-table/prime-table.component.model';
-import { ContentLayoutComponent } from '@shared/layouts/content-layout/content-layout.component';
 
 type Product = {
 	code: string;
@@ -15,7 +14,7 @@ type Product = {
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [PrimeTableComponent, ContentLayoutComponent],
+	imports: [PrimeTableComponent],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss'
 })
