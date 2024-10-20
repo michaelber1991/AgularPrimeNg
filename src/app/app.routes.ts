@@ -5,6 +5,6 @@ export const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{
 		path: AppRoutes.HOME,
-		loadChildren: () => import('./modules/home/presentation/pages/home.routes').then((c) => c.routes)
+		loadChildren: () => import('./presentation/home/pages/home.routes').then((c) => c.routes)
 	}
 ];

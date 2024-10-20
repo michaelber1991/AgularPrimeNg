@@ -22,7 +22,9 @@
 		"baseUrl": "src",
 		"paths": {
 			"@assets/*": ["app/assets/*"],
-			"@shared/*": ["app/shared/*"]
+			"@shared/*": ["app/shared/*"],
+			"@core/*": ["app/core/*"],
+			"@data-access/*": ["app/data-access/*"]
 		}
 	},
 	"angularCompilerOptions": {

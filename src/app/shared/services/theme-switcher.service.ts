@@ -17,9 +17,13 @@ export class ThemeSwitcherService {
 	public setTheme(type: ThemeSwitcherType): void {
 		if (isPlatformBrowser(this.platformId)) {
 			const themeToSet = this.themes.find((theme) => theme.type === type);
-			themeToSet?.themeSwitcherItems.forEach((item) => {
-				document.documentElement.style.setProperty(item.property, item.value);
-			});
+			if (themeToSet) {
+				let cssVariables = '';
+				themeToSet.themeSwitcherItems.forEach((item) => {
+					cssVariables += `${item.property}: ${item.value}; `;
+				});
+				document.documentElement.style.cssText += cssVariables;
+			}
 		}
 	}
 }
