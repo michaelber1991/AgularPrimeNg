@@ -216,7 +216,7 @@
 			"propertiesClass": [
 				{
 					"name": "title",
-					"defaultValue": "'angular17p'",
+					"defaultValue": "'AppNamep'",
 					"deprecated": false,
 					"deprecationMessage": "",
 					"type": "string",
@@ -243,7 +243,7 @@
 			"description": "",
 			"rawdescription": "\n",
 			"type": "component",
-			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n\tselector: 'app-root',\n\tstandalone: true,\n\timports: [CommonModule, RouterOutlet],\n\ttemplateUrl: './app.component.html',\n\tstyleUrl: './app.component.scss'\n})\nexport class AppComponent {\n\ttitle = 'angular17p';\n}\n",
+			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n\tselector: 'app-root',\n\tstandalone: true,\n\timports: [CommonModule, RouterOutlet],\n\ttemplateUrl: './app.component.html',\n\tstyleUrl: './app.component.scss'\n})\nexport class AppComponent {\n\ttitle = 'AppNamep';\n}\n",
 			"styleUrl": "./app.component.scss",
 			"assetsDirs": [],
 			"styleUrlsData": "",

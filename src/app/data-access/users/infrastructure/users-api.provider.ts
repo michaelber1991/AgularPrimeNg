@@ -1,6 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core';
-import { IUsersApiService } from './users-api-service.interface';
-import { UsersApiService } from './users-api-service.service';
+import { IUsersApiService } from './users-api.interface';
+import { UsersApiService } from './users-api.service';
 
 export const HTTP_USERS_SERVICE = new InjectionToken<IUsersApiService>('UsersApiService');
 

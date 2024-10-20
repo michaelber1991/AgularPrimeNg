@@ -11,6 +11,7 @@ export class PrimeTable<T> {
 	values = signal<PrimeTableValues<T>>({ data: [], totalRecords: 0 });
 	totalRecords: number;
 	rowsPerPageOptions: number[];
+	loading: boolean;
 	onLazyload: () => Promise<void>;
 
 	constructor(data: Partial<PrimeTable<T>>) {
@@ -19,6 +20,7 @@ export class PrimeTable<T> {
 		this.rowsPerPageOptions = data.rowsPerPageOptions || [10, 20, 50];
 		this.totalRecords = data.totalRecords || 0;
 		this.onLazyload = data.onLazyload ?? (async (): Promise<void> => {});
+		this.loading = data.loading || false;
 	}
 }
 

@@ -3,7 +3,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"angular17": {
+		"AppName": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
@@ -17,7 +17,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:application",
 					"options": {
-						"outputPath": "dist/angular17",
+						"outputPath": "dist/AppName",
 						"index": "src/index.html",
 						"browser": "src/main.ts",
 						"polyfills": ["zone.js"],
@@ -70,10 +70,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "angular17:build:production"
+							"buildTarget": "AppName:build:production"
 						},
 						"development": {
-							"buildTarget": "angular17:build:development"
+							"buildTarget": "AppName:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
@@ -81,7 +81,7 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"buildTarget": "angular17:build"
+						"buildTarget": "AppName:build"
 					}
 				},
 				"test": {
@@ -105,7 +105,7 @@
 					"builder": "@storybook/angular:start-storybook",
 					"options": {
 						"configDir": ".storybook",
-						"browserTarget": "angular17:build",
+						"browserTarget": "AppName:build",
 						"compodoc": true,
 						"compodocArgs": ["-e", "json", "-d", "."],
 						"port": 6006
@@ -115,7 +115,7 @@
 					"builder": "@storybook/angular:build-storybook",
 					"options": {
 						"configDir": ".storybook",
-						"browserTarget": "angular17:build",
+						"browserTarget": "AppName:build",
 						"compodoc": true,
 						"compodocArgs": ["-e", "json", "-d", "."],
 						"outputDir": "storybook-static"
