@@ -1,4 +1,4 @@
-export interface IUserResponse {
+export interface IUserModel {
 	readonly id: number;
 	readonly email: string;
 	readonly first_name: string;

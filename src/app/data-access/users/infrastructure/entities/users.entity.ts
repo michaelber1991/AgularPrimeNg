@@ -1,4 +1,4 @@
-export interface IUserApiResponse {
+export interface IUserEntity {
 	readonly id: number;
 	readonly email: string;
 	readonly first_name: string;

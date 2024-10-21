@@ -1,6 +1,6 @@
 import { Component, inject, Signal, signal } from '@angular/core';
 import { UsersService } from '@data-access/users/application/users.service';
-import { IUserResponse } from '@data-access/users/domain/users.model';
+import { IUserModel } from '@data-access/users/domain/users.model';
 import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
 import { PrimeTable, PrimeTableColumn } from '@shared/components/prime-table/prime-table.component.model';
 import { firstValueFrom } from 'rxjs';
@@ -16,9 +16,9 @@ export class HomeComponent {
 	public tableInput = this.setTableInput();
 	private _usersService = inject(UsersService);
 
-	private setTableInput(): Signal<PrimeTable<IUserResponse>> {
-		return signal<PrimeTable<IUserResponse>>(
-			new PrimeTable<IUserResponse>({
+	private setTableInput(): Signal<PrimeTable<IUserModel>> {
+		return signal<PrimeTable<IUserModel>>(
+			new PrimeTable<IUserModel>({
 				title: 'Users',
 				columns: [
 					new PrimeTableColumn({ property: 'avatar', header: 'Avatar', isFrozen: true }),
