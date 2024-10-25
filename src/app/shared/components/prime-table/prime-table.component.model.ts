@@ -1,4 +1,5 @@
 import { signal } from '@angular/core';
+import { TableLazyLoadEvent } from 'primeng/table';
 
 export type PrimeTableValues<T> = {
 	data: T[];
@@ -12,7 +13,7 @@ export class PrimeTable<T> {
 	totalRecords: number;
 	rowsPerPageOptions: number[];
 	loading: boolean;
-	onLazyload: () => Promise<void>;
+	onLazyload: (event: TableLazyLoadEvent) => Promise<void>;
 
 	constructor(data: Partial<PrimeTable<T>>) {
 		this.title = data.title || '';

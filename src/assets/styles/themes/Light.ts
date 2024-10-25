@@ -2,7 +2,7 @@ import { ThemeSwitcherItem, ThemeSwitcherProperties } from './_base.model';
 
 export const LightTheme = [
 	//colors
-	new ThemeSwitcherItem(ThemeSwitcherProperties.PRIMARY_COLOR, '#3f5e85'),
+	new ThemeSwitcherItem(ThemeSwitcherProperties.PRIMARY_COLOR, '#0e3b72'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.PRIMARY_CONTRAST_COLOR, 'white'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.WATERMARK_COLOR, '#e2e8ec'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.WATERMARK_CONTRAST_COLOR, '#343a40'),

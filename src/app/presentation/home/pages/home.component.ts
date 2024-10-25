@@ -1,14 +1,16 @@
 import { Component, inject, Signal, signal } from '@angular/core';
 import { UsersService } from '@data-access/users/application/users.service';
 import { IUserModel } from '@data-access/users/domain/users.model';
+import { ButtonComponent } from '@shared/components/forms/button/button.component';
 import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
 import { PrimeTable, PrimeTableColumn } from '@shared/components/prime-table/prime-table.component.model';
+import { HomeIconComponent } from '@shared/icons/home-icon/home-icon.component';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [PrimeTableComponent],
+	imports: [PrimeTableComponent, ButtonComponent, HomeIconComponent],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss'
 })
@@ -26,8 +28,11 @@ export class HomeComponent {
 					new PrimeTableColumn({ property: 'last_name', header: 'Last Name', isFrozen: false }),
 					new PrimeTableColumn({ property: 'email', header: 'Email', isFrozen: false })
 				],
-				onLazyload: async (): Promise<void> => {
-					const users = await firstValueFrom(this._usersService.getUsers());
+				rowsPerPageOptions: [3, 15, 50],
+				onLazyload: async ({ first, rows }): Promise<void> => {
+					const users = await firstValueFrom(
+						this._usersService.getUsers({ page: first && rows ? first / rows + 1 : 1, per_page: rows ? rows : 10 })
+					);
 					this.tableInput().values.update(() => {
 						return {
 							data: users.data,

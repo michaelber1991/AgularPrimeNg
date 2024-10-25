@@ -7,7 +7,7 @@
 		[paginator]="true"
 		[scrollable]="true"
 		[lazy]="true"
-		(onLazyLoad)="input().onLazyload()"
+		(onLazyLoad)="input().onLazyload($event)"
 		[totalRecords]="input().values().totalRecords"
 		[loading]="input().loading"
 		styleClass="prime-table-container"
