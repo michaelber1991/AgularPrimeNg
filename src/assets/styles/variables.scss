@@ -1,8 +1,10 @@
 ::ng-deep :root {
 	--primary-color: #0e3b72;
 	--primary-contrast-color: white;
-	--watermark-color: #e2e8ec;
-	--watermark-contrast-color: #343a40;
+	--watermark-color: #efefef;
+	--watermark-contrast-color: var(--dark-color);
+	--gray-light-color: #ebe9e9;
+	--gray-light-contrast-color: var(--dark-color);
 	--secondary-color: #6c757d;
 	--success-color: #28a745;
 	--info-color: #17a2b8;

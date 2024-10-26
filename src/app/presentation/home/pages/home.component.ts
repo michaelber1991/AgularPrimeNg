@@ -1,10 +1,10 @@
 import { Component, inject, Signal, signal } from '@angular/core';
 import { UsersService } from '@data-access/users/application/users.service';
 import { IUserModel } from '@data-access/users/domain/users.model';
-import { ButtonComponent } from '@shared/components/forms/button/button.component';
+import { ButtonComponent, ButtonComponentModel } from '@shared/components/forms/button/button.component';
 import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
 import { PrimeTable, PrimeTableColumn } from '@shared/components/prime-table/prime-table.component.model';
-import { HomeIconComponent } from '@shared/icons/home-icon/home-icon.component';
+import { HomeIconComponent } from '@shared/icons/home-icon.component';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -16,8 +16,11 @@ import { firstValueFrom } from 'rxjs';
 })
 export class HomeComponent {
 	public tableInput = this.setTableInput();
-	private _usersService = inject(UsersService);
+	public formItems = {
+		button: signal<ButtonComponentModel>(new ButtonComponentModel({ label: 'Continue' }))
+	};
 
+	private _usersService = inject(UsersService);
 	private setTableInput(): Signal<PrimeTable<IUserModel>> {
 		return signal<PrimeTable<IUserModel>>(
 			new PrimeTable<IUserModel>({

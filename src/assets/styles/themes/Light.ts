@@ -4,8 +4,10 @@ export const LightTheme = [
 	//colors
 	new ThemeSwitcherItem(ThemeSwitcherProperties.PRIMARY_COLOR, '#0e3b72'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.PRIMARY_CONTRAST_COLOR, 'white'),
-	new ThemeSwitcherItem(ThemeSwitcherProperties.WATERMARK_COLOR, '#e2e8ec'),
+	new ThemeSwitcherItem(ThemeSwitcherProperties.WATERMARK_COLOR, '#efefef'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.WATERMARK_CONTRAST_COLOR, '#343a40'),
+	new ThemeSwitcherItem(ThemeSwitcherProperties.GRAY_LIGHT_COLOR, '#ebe9e9'),
+	new ThemeSwitcherItem(ThemeSwitcherProperties.GRAY_LIGHT_CONTRAST_COLOR, '#343a40'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.SECONDARY_COLOR, '#6c757d'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.SUCCESS_COLOR, '#28a745'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.INFO_COLOR, '#17a2b8'),

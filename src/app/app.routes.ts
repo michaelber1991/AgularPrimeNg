@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AppRoutes } from '@shared/routes/routes';
+import { AppRoutes } from '@core/routes/routes';
 
 export const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },

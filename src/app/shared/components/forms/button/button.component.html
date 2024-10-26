@@ -1,1 +1,7 @@
-<button class="app-button">Continue</button>
+<button class="app-button {{ input().type }}">
+	<ng-content
+		class="app-button-icon"
+		select="[icon]"
+	></ng-content
+	>{{ input().label }}
+</button>

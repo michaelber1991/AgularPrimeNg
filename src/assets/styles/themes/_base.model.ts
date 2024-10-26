@@ -26,6 +26,8 @@ export enum ThemeSwitcherProperties {
 	PRIMARY_CONTRAST_COLOR = '--primary-contrast-color',
 	WATERMARK_COLOR = '--watermark-color',
 	WATERMARK_CONTRAST_COLOR = '--watermark-contrast-color',
+	GRAY_LIGHT_COLOR = '--gray-light-color',
+	GRAY_LIGHT_CONTRAST_COLOR = '--gray-light-contrast-color',
 	SECONDARY_COLOR = '--secondary-color',
 	SUCCESS_COLOR = '--success-color',
 	INFO_COLOR = '--info-color',

@@ -1,0 +1,11 @@
+.header-menu-container {
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	box-shadow: 0 2px 3px var(--watermark-color, 0.2);
+
+	width: 100%;
+	height: 60px;
+	padding: 1em;
+}
