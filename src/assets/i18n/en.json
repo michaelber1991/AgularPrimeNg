@@ -1,10 +1,10 @@
 {
 	"root": {
-		"home": "casa",
-		"name": "nombre",
-		"continue": "continuar",
+		"home": "home",
+		"name": "name",
+		"continue": "continue",
 		"avatar": "avatar",
-		"lastName": "apellido",
+		"lastName": "lastname",
 		"email": "email",
 		"configuration": "configuration"
 	}

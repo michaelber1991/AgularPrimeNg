@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal, signal } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { FormPropertiesModel } from '@shared/components/forms/_models/base-form';
@@ -7,6 +7,8 @@ import { HeaderMenuComponent, HeaderMenuComponentModel } from '@shared/component
 import { HomeIconComponent } from '@shared/icons/home-icon.component';
 import { SettingsIconComponent } from '@shared/icons/settings-icon.component';
 import { ContentLayoutComponent } from '@shared/layouts/content-layout/content-layout.component';
+import { StringFormatter } from '@shared/utils/string-formater';
+import { TranslationService } from 'assets/i18n/translation.service';
 
 enum FormControls {
 	COMPONENTS = 'components'
@@ -24,22 +26,33 @@ enum FormControls {
 	</div>`,
 	styleUrl: './main-layout.component.scss'
 })
-export class MainLayoutComponent {
+export class MainLayoutComponent implements OnInit {
 	public form = new FormGroup({});
-	public headerMenuInput = signal<HeaderMenuComponentModel>(
-		new HeaderMenuComponentModel({
-			items: [
-				new ButtonComponentModel({ icon: HomeIconComponent, type: ButtonComponentModelType.SECONDARY }),
-				new ButtonComponentModel({
-					label: 'Components',
-					icon: SettingsIconComponent,
-					type: ButtonComponentModelType.SECONDARY,
-					formProperties: new FormPropertiesModel({
-						form: this.form,
-						formControl: FormControls.COMPONENTS
+	public headerMenuInput!: Signal<HeaderMenuComponentModel>;
+	private _translationService = inject(TranslationService);
+
+	ngOnInit(): void {
+		this.headerMenuInput = this.setheaderMenuInput();
+	}
+
+	private setheaderMenuInput(): Signal<HeaderMenuComponentModel> {
+		return signal<HeaderMenuComponentModel>(
+			new HeaderMenuComponentModel({
+				items: [
+					new ButtonComponentModel({ icon: HomeIconComponent, type: ButtonComponentModelType.SECONDARY }),
+					new ButtonComponentModel({
+						label: computed(() =>
+							StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().configuration)
+						),
+						icon: SettingsIconComponent,
+						type: ButtonComponentModelType.SECONDARY,
+						formProperties: new FormPropertiesModel({
+							form: this.form,
+							formControl: FormControls.COMPONENTS
+						})
 					})
-				})
-			]
-		})
-	);
+				]
+			})
+		);
+	}
 }

@@ -1,29 +1,28 @@
-import { Component, inject, OnInit, Signal, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal, signal } from '@angular/core';
 import { UsersService } from '@data-access/users/application/users.service';
 import { IUserModel } from '@data-access/users/domain/users.model';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonComponent, ButtonComponentModel } from '@shared/components/forms/button/button.component';
+import { ButtonComponent } from '@shared/components/forms/button/button.component';
 import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
 import { PrimeTable, PrimeTableColumn } from '@shared/components/prime-table/prime-table.component.model';
 import { HomeIconComponent } from '@shared/icons/home-icon.component';
+import { CapitalizeFirstPipe } from '@shared/pipes/capitalize-first.pipe';
+import { StringFormatter } from '@shared/utils/string-formater';
 import { TranslationService } from 'assets/i18n/translation.service';
-
 import { firstValueFrom } from 'rxjs';
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [PrimeTableComponent, ButtonComponent, HomeIconComponent, TranslateModule],
+	imports: [PrimeTableComponent, ButtonComponent, HomeIconComponent, TranslateModule, CapitalizeFirstPipe],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
 	public tableInput!: Signal<PrimeTable<IUserModel>>;
-	public formItems = {
-		button: signal<ButtonComponentModel>(new ButtonComponentModel({ label: 'Continue' }))
-	};
+
 	private _usersService = inject(UsersService);
-	public _translateService = inject(TranslationService);
+	private _translationService = inject(TranslationService);
 
 	ngOnInit(): void {
 		this.tableInput = this.setTableInput();
@@ -34,14 +33,34 @@ export class HomeComponent implements OnInit {
 			new PrimeTable<IUserModel>({
 				title: 'Users ',
 				columns: [
-					new PrimeTableColumn({ property: 'avatar', header: 'Avatar', isFrozen: true }),
+					new PrimeTableColumn({
+						property: 'avatar',
+						header: computed(() =>
+							StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().avatar)
+						),
+						isFrozen: true
+					}),
 					new PrimeTableColumn({
 						property: 'first_name',
-						header: this._translateService.getTranslation(this._translateService.getTranslationBook().name),
+						header: computed(() =>
+							StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().name)
+						),
 						isFrozen: false
 					}),
-					new PrimeTableColumn({ property: 'last_name', header: 'Last Name', isFrozen: false }),
-					new PrimeTableColumn({ property: 'email', header: 'Email', isFrozen: false })
+					new PrimeTableColumn({
+						property: 'last_name',
+						header: computed(() =>
+							StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().lastName)
+						),
+						isFrozen: false
+					}),
+					new PrimeTableColumn({
+						property: 'email',
+						header: computed(() =>
+							StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().email)
+						),
+						isFrozen: false
+					})
 				],
 				rowsPerPageOptions: [3, 15, 50],
 				onLazyload: async ({ first, rows }): Promise<void> => {

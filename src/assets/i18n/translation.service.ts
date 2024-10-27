@@ -8,23 +8,15 @@ import { Languages } from './languages';
 })
 export class TranslationService {
 	private _translateService = inject(TranslateService);
-	private translationBook = signal<ITranslations>(this._translateService.instant(TranslationsRoot.ROOT));
+	public translationBook = signal<ITranslations>(this._translateService.instant(TranslationsRoot.ROOT));
 
 	public async setTranslationLanguage(lang: Languages): Promise<void> {
 		this._translateService.use(lang);
 		await this.setTranslationBook();
 	}
 
-	public getTranslationBook(): ITranslations {
-		return this.translationBook();
-	}
-
-	public getTranslation(key: string): string {
-		return key ? this._translateService.instant(key) : '';
-	}
-
 	private async setTranslationBook(): Promise<void> {
 		const book = await this._translateService.instant(TranslationsRoot.ROOT);
-		this.translationBook.update(() => book);
+		this.translationBook.set(book);
 	}
 }

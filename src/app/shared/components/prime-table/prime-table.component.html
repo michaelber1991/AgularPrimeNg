@@ -25,7 +25,7 @@
 						[frozen]="column.isFrozen"
 						[ngStyle]="{ 'min-width': column.minWidth }"
 					>
-						{{ column.header }}
+						{{ column.header() }}
 					</th>
 				}
 			</tr>

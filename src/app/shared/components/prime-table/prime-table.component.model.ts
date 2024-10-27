@@ -1,4 +1,4 @@
-import { signal } from '@angular/core';
+import { Signal, signal } from '@angular/core';
 import { TableLazyLoadEvent } from 'primeng/table';
 
 export type PrimeTableValues<T> = {
@@ -33,13 +33,13 @@ export enum PrimeTableColumnAlignFrozen {
 export class PrimeTableColumn {
 	isFrozen: boolean;
 	property: string;
-	header: string;
+	header: Signal<string>;
 	minWidth: string;
 	alignFrozen: PrimeTableColumnAlignFrozen;
 	constructor(data: Partial<PrimeTableColumn>) {
 		this.isFrozen = data.isFrozen || false;
 		this.property = data.property || '';
-		this.header = data.header || '';
+		this.header = data.header || signal<string>('');
 		this.minWidth = data.minWidth || '';
 		this.alignFrozen = data.alignFrozen || PrimeTableColumnAlignFrozen.Left;
 	}

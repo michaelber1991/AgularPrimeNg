@@ -1,4 +1,4 @@
-import { Component, input, Type } from '@angular/core';
+import { Component, input, signal, Signal, Type } from '@angular/core';
 import { BaseFormModel } from '../_models/base-form';
 
 export enum ButtonComponentModelType {
@@ -10,7 +10,7 @@ export enum ButtonComponentModelType {
 	INFO = 'info'
 }
 export class ButtonComponentModel extends BaseFormModel {
-	public label?: string;
+	public label: Signal<string>;
 	type: ButtonComponentModelType;
 	icon?: Type<Component>;
 
@@ -18,6 +18,7 @@ export class ButtonComponentModel extends BaseFormModel {
 		super();
 		Object.assign(this, data);
 		this.type = data.type || ButtonComponentModelType.PRIMARY;
+		this.label = data.label || signal<string>('');
 	}
 }
 
