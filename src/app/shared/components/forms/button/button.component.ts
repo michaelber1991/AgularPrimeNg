@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, input, Type } from '@angular/core';
+import { BaseFormModel } from '../_models/base-form';
 
 export enum ButtonComponentModelType {
 	PRIMARY = 'primary',
@@ -8,13 +9,13 @@ export enum ButtonComponentModelType {
 	SUCCESS = 'success',
 	INFO = 'info'
 }
-export class ButtonComponentModel {
+export class ButtonComponentModel extends BaseFormModel {
 	public label?: string;
 	type: ButtonComponentModelType;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	icon: any;
+	icon?: Type<Component>;
 
 	constructor(data: Partial<ButtonComponentModel>) {
+		super();
 		Object.assign(this, data);
 		this.type = data.type || ButtonComponentModelType.PRIMARY;
 	}

@@ -1,10 +1,12 @@
 <div class="header-menu-container">
 	@for (item of input().items; track $index) {
-		<app-button [input]="item"
-			><ng-container
-				icon
-				*ngComponentOutlet="item.icon"
-			></ng-container
-		></app-button>
+		<app-button [input]="item">
+			@if (item.icon) {
+				<ng-container
+					icon
+					*ngComponentOutlet="item.icon"
+				></ng-container>
+			}
+		</app-button>
 	}
 </div>

@@ -1,4 +1,5 @@
-<app-header-menu [input]="headerMenuInput()" />
-<app-content-layout>
+@if (isAuthenticated) {
+	<app-main-layout> </app-main-layout>
+} @else {
 	<router-outlet></router-outlet>
-</app-content-layout>
+}
