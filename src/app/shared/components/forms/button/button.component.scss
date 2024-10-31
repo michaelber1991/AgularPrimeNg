@@ -51,4 +51,9 @@
 			background-image: linear-gradient(to bottom right, var(--watermark-color), var(--gray-light-color));
 		}
 	}
+
+	&.disabled {
+		opacity: 1;
+		cursor: default;
+	}
 }

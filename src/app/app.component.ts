@@ -6,6 +6,8 @@ import { ThemeSwitcherService } from '@shared/services/theme-switcher.service';
 import { Languages } from 'assets/i18n/languages';
 import { TranslationService } from 'assets/i18n/translation.service';
 import { ThemeSwitcherType } from 'assets/styles/themes/_base.model';
+import { PrimeNGConfig } from 'primeng/api';
+import { Aura } from 'primeng/themes/aura';
 
 @Component({
 	selector: 'app-root',
@@ -18,6 +20,11 @@ export class AppComponent implements OnInit {
 	public isAuthenticated = true;
 	private themeSwitcherService = inject(ThemeSwitcherService);
 	private _translationService = inject(TranslationService);
+	private _config = inject(PrimeNGConfig);
+
+	constructor() {
+		this._config.theme.set({ preset: Aura });
+	}
 
 	async ngOnInit(): Promise<void> {
 		this._translationService.setTranslationLanguage(Languages.SPANISH);

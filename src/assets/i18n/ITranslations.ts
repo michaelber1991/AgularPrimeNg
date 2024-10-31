@@ -4,10 +4,14 @@ export enum TranslationsRoot {
 
 export interface ITranslations {
 	home: string;
-	name: string;
 	continue: string;
-	avatar: string;
-	lastName: string;
-	email: string;
 	configuration: string;
+	select: string;
+	language: string;
+	user?: {
+		avatar: string;
+		name: string;
+		lastName: string;
+		email: string;
+	};
 }

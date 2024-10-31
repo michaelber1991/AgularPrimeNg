@@ -1,7 +1,11 @@
 import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 export class BaseFormModel {
-	public formProperties?: FormPropertiesModel;
+	public formProperties: FormPropertiesModel;
+	constructor(data: Partial<BaseFormModel> = {}) {
+		Object.assign(this, data);
+		this.formProperties = data.formProperties || new FormPropertiesModel({ form: new FormGroup({}), formControl: '' });
+	}
 }
 
 export class FormPropertiesModel {

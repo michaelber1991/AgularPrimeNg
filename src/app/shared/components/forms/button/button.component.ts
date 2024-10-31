@@ -1,4 +1,5 @@
 import { Component, input, signal, Signal, Type } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BaseFormModel } from '../_models/base-form';
 
 export enum ButtonComponentModelType {
@@ -9,23 +10,31 @@ export enum ButtonComponentModelType {
 	SUCCESS = 'success',
 	INFO = 'info'
 }
+
+export enum ButtonComponentType {
+	TEXT = 'text',
+	SUBMIT = 'submit'
+}
+
 export class ButtonComponentModel extends BaseFormModel {
-	public label: Signal<string>;
-	type: ButtonComponentModelType;
+	label: Signal<string>;
+	model: ButtonComponentModelType;
 	icon?: Type<Component>;
+	type: ButtonComponentType;
 
 	constructor(data: Partial<ButtonComponentModel>) {
 		super();
 		Object.assign(this, data);
-		this.type = data.type || ButtonComponentModelType.PRIMARY;
+		this.model = data.model || ButtonComponentModelType.PRIMARY;
 		this.label = data.label || signal<string>('');
+		this.type = data.type || ButtonComponentType.TEXT;
 	}
 }
 
 @Component({
 	selector: 'app-button',
 	standalone: true,
-	imports: [],
+	imports: [ReactiveFormsModule],
 	templateUrl: './button.component.html',
 	styleUrl: './button.component.scss'
 })

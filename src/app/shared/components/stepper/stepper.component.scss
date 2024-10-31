@@ -1,0 +1,89 @@
+$default: #c5c5c5;
+
+$transiton: all 500ms ease;
+
+.stepper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	position: relative;
+	z-index: 0;
+
+	&-progress {
+		position: absolute;
+		background-color: var(--gray-light-color);
+		height: 1px;
+		z-index: -1;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+
+		&-bar {
+			position: absolute;
+			left: 0;
+			height: 100%;
+			width: 0%;
+			background-color: var(--primary-color);
+			transition: $transiton;
+		}
+	}
+}
+
+.stepper-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: $default;
+	transition: $transiton;
+	cursor: pointer;
+	font-size: small;
+
+	&-counter {
+		padding: 0.7em 1.3em;
+		display: grid;
+		place-items: center;
+		background-color: #fff;
+		border-radius: 30px;
+		border: 1px solid var(--gray-light-color);
+		position: relative;
+	}
+}
+
+.stepper-item-counter {
+	&::after {
+		background-image: linear-gradient(to bottom right, var(--watermark-color), var(--gray-light-color));
+		color: var(--watermark-contrast-color);
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 30px;
+		z-index: -1;
+	}
+	&:hover {
+		z-index: 0;
+	}
+}
+
+.stepper-item.success {
+	.stepper-item-counter {
+		background-image: linear-gradient(to bottom right, var(--primary-color), var(--dark-color));
+		color: var(--primary-contrast-color);
+		&::after {
+			background-image: linear-gradient(to bottom right, var(--dark-color), var(--primary-color));
+		}
+	}
+}
+
+.stepper-item.current {
+	.stepper-item-counter {
+		background-image: linear-gradient(to bottom right, var(--primary-color), var(--dark-color));
+		color: var(--primary-contrast-color);
+		&::after {
+			background-image: linear-gradient(to bottom right, var(--dark-color), var(--primary-color));
+		}
+	}
+}

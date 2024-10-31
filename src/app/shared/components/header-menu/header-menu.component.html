@@ -1,12 +1,20 @@
 <div class="header-menu-container">
-	@for (item of input().items; track $index) {
-		<app-button [input]="item">
-			@if (item.icon) {
-				<ng-container
-					icon
-					*ngComponentOutlet="item.icon"
-				></ng-container>
-			}
-		</app-button>
-	}
+	<app-button [input]="formItems.home">
+		@if (formItems.home.icon) {
+			<ng-container
+				icon
+				*ngComponentOutlet="formItems.home.icon"
+			></ng-container>
+		}
+	</app-button>
+	<app-button [input]="formItems.components">
+		@if (formItems.components.icon) {
+			<ng-container
+				icon
+				*ngComponentOutlet="formItems.components.icon"
+			></ng-container>
+		}
+	</app-button>
+	<app-input [input]="formItems.name" />
+	<app-select [input]="formItems.languague" />
 </div>

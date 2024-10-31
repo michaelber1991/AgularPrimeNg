@@ -1,7 +1,15 @@
-<button class="app-button {{ input().type }}">
-	<ng-content
-		class="app-button-icon"
-		select="[icon]"
-	></ng-content
-	>{{ input().label() }}
-</button>
+<form [formGroup]="input().formProperties.form">
+	<button
+		class="app-button"
+		[class.[input().model]]="input().formProperties.form.invalid"
+		[class.disabled]="input().formProperties.form.invalid"
+		type="{{ input().type }}"
+		[disabled]="input().formProperties.form.invalid"
+	>
+		<ng-content
+			class="app-button-icon"
+			select="[icon]"
+		></ng-content>
+		{{ input().label() }}
+	</button>
+</form>

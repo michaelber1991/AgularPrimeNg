@@ -1,1 +1,10 @@
-<p>input works!</p>
+<form [formGroup]="input().formProperties.form">
+	<p-floatlabel variant="on">
+		<input
+			type="{{ input().type }}"
+			pInputText
+			formControlName="{{ input().formProperties.formControl }}"
+		/>
+		<label for="on_label">{{ input().label }}</label>
+	</p-floatlabel>
+</form>

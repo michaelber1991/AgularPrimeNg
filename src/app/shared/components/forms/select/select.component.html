@@ -1,0 +1,10 @@
+<form [formGroup]="input().formProperties.form">
+	<p-select
+		formControlName="{{ input().formProperties.formControl }}"
+		[options]="input().options"
+		optionLabel="{{ input().optionLabel }}"
+		optionValue="{{ input().optionValue }}"
+		placeholder="{{ input().placeholder() }}"
+		(onChange)="input().onChange($event.value)"
+	/>
+</form>

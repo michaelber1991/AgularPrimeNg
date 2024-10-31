@@ -1,0 +1,22 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<div class="stepper">
+	<div class="stepper-progress">
+		<div
+			class="stepper-progress-bar"
+			[style.width]="stepperProgress"
+		></div>
+	</div>
+	@for (item of input().steps; track $index) {
+		<div
+			class="stepper-item"
+			[class.current]="input().step === $index + 1"
+			[class.success]="input().step > $index + 1"
+			(click)="selectStep($index + 1)"
+		>
+			<div class="stepper-item-counter">
+				<span class="number">{{ item }}</span>
+			</div>
+		</div>
+	}
+</div>

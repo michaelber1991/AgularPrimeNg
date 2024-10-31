@@ -1,11 +1,15 @@
 {
 	"root": {
 		"home": "casa",
-		"name": "nombre",
 		"continue": "continuar",
-		"avatar": "avatar",
-		"lastName": "apellido",
-		"email": "email",
-		"configuration": "configuration"
+		"configuration": "configuration",
+		"select": "elegir",
+		"language": "lenguaje",
+		"user": {
+			"avatar": "avatar",
+			"name": "nombre",
+			"lastName": "apellido",
+			"email": "correo"
+		}
 	}
 }
