@@ -22,6 +22,7 @@ export class ThemeSwitcherItem {
 }
 
 export enum ThemeSwitcherProperties {
+	//colors
 	PRIMARY_COLOR = '--primary-color',
 	PRIMARY_CONTRAST_COLOR = '--primary-contrast-color',
 	WATERMARK_COLOR = '--watermark-color',
@@ -35,5 +36,8 @@ export enum ThemeSwitcherProperties {
 	DANGER_COLOR = '--danger-color',
 	LIGHT_COLOR = '--light-color',
 	DARK_COLOR = '--dark-color',
+	WHITE_COLOR = '--white-color',
+
+	//shadows
 	CARD_SHADOW = '--card-shadow'
 }

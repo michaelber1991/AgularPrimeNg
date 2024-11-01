@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal, Signal } from '@angular/core';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 
@@ -16,7 +16,7 @@ export enum InputTextComponentType {
 export class InputTextComponentModel extends BaseFormModel {
 	placeholder: string;
 	value: string;
-	label: string;
+	label: Signal<string>;
 	type: InputTextComponentType;
 	icon?: Type<Component>;
 
@@ -25,7 +25,7 @@ export class InputTextComponentModel extends BaseFormModel {
 		Object.assign(this, data);
 		this.placeholder = data.placeholder || '';
 		this.value = data.value || '';
-		this.label = data.label || '';
+		this.label = data.label || signal<string>('');
 		this.type = data.type || InputTextComponentType.TEXT;
 	}
 }

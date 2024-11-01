@@ -1,15 +1,17 @@
 <form [formGroup]="input().formProperties.form">
 	<button
-		class="app-button"
-		[class.[input().model]]="input().formProperties.form.invalid"
+		class="app-button {{ input().model }}"
 		[class.disabled]="input().formProperties.form.invalid"
 		type="{{ input().type }}"
 		[disabled]="input().formProperties.form.invalid"
+		(click)="input().onClick()"
 	>
 		<ng-content
 			class="app-button-icon"
 			select="[icon]"
 		></ng-content>
-		{{ input().label() }}
+		@if (input().label()) {
+			<span>{{ input().label() }}</span>
+		}
 	</button>
 </form>

@@ -1,5 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
 import { ITranslations, TranslationsRoot } from './ITranslations';
 import { Languages } from './languages';
 
@@ -11,12 +12,12 @@ export class TranslationService {
 	public translationBook = signal<ITranslations>(this._translateService.instant(TranslationsRoot.ROOT));
 
 	public async setTranslationLanguage(lang: Languages): Promise<void> {
-		this._translateService.use(lang);
-		await this.setTranslationBook();
+		await firstValueFrom(this._translateService.use(lang));
+		const book = await firstValueFrom(this._translateService.get(TranslationsRoot.ROOT));
+		this.translationBook.set(book);
 	}
 
-	private async setTranslationBook(): Promise<void> {
-		const book = await this._translateService.instant(TranslationsRoot.ROOT);
-		this.translationBook.set(book);
+	public getCurrentLanguage(): Languages {
+		return this._translateService.currentLang as Languages;
 	}
 }

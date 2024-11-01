@@ -15,6 +15,7 @@ export const LightTheme = [
 	new ThemeSwitcherItem(ThemeSwitcherProperties.DANGER_COLOR, '#dc3545'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.LIGHT_COLOR, '#f8f9fa'),
 	new ThemeSwitcherItem(ThemeSwitcherProperties.DARK_COLOR, '#343a40'),
+	new ThemeSwitcherItem(ThemeSwitcherProperties.WHITE_COLOR, '#fff'),
 
 	//shadows
 	new ThemeSwitcherItem(

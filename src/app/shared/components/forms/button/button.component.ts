@@ -21,6 +21,7 @@ export class ButtonComponentModel extends BaseFormModel {
 	model: ButtonComponentModelType;
 	icon?: Type<Component>;
 	type: ButtonComponentType;
+	onClick: () => void;
 
 	constructor(data: Partial<ButtonComponentModel>) {
 		super();
@@ -28,6 +29,7 @@ export class ButtonComponentModel extends BaseFormModel {
 		this.model = data.model || ButtonComponentModelType.PRIMARY;
 		this.label = data.label || signal<string>('');
 		this.type = data.type || ButtonComponentType.TEXT;
+		this.onClick = data.onClick || ((): void => {});
 	}
 }
 

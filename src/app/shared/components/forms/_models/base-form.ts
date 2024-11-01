@@ -14,6 +14,7 @@ export class FormPropertiesModel {
 	public validators?: ValidatorFn[];
 	form: FormGroup;
 	formControl: string;
+	defaultValue?: unknown;
 
 	constructor(
 		data: Omit<Partial<FormPropertiesModel>, 'form' | 'formControl'> & {
@@ -25,12 +26,14 @@ export class FormPropertiesModel {
 		this.form = data.form;
 		this.formControl = data.formControl;
 
-		this.addFormControl(this.formControl, this.validators);
+		// Agrega el FormControl con el valor predeterminado opcional
+		this.addFormControl(this.formControl, this.validators, data.defaultValue);
 	}
 
-	public addFormControl(controlName: string, validators: ValidatorFn[] = []): void {
+	// Modificación para aceptar un valor predeterminado
+	public addFormControl(controlName: string, validators: ValidatorFn[] = [], defaultValue: unknown = ''): void {
 		if (!this.form.contains(controlName)) {
-			this.form.addControl(controlName, new FormControl('', validators));
+			this.form.addControl(controlName, new FormControl(defaultValue, validators));
 		}
 	}
 }

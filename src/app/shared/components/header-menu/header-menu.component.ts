@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import {
 	ButtonComponent,
@@ -22,6 +22,13 @@ enum FormControls {
 	LANGUAGE = 'language'
 }
 
+interface FormItems {
+	name: InputTextComponentModel;
+	components: ButtonComponentModel;
+	home: ButtonComponentModel;
+	languague: InputSelectComponentModel;
+}
+
 @Component({
 	selector: 'app-header-menu',
 	standalone: true,
@@ -29,21 +36,32 @@ enum FormControls {
 	templateUrl: './header-menu.component.html',
 	styleUrl: './header-menu.component.scss'
 })
-export class HeaderMenuComponent {
+export class HeaderMenuComponent implements OnInit {
 	public form = new FormGroup({});
-	public formItems = {
-		name: this.setName(),
-		components: this.setComponents(),
-		home: this.setHomeButton(),
-		languague: this.setLanguage()
-	};
+	public formItems!: FormItems;
 	private _translationService = inject(TranslationService);
 
-	private setHomeButton(): ButtonComponentModel {
-		return new ButtonComponentModel({ icon: HomeIconComponent, model: ButtonComponentModelType.PRIMARY });
+	ngOnInit(): void {
+		this.formItems = this.setFormItems(this.form);
 	}
 
-	private setComponents(): ButtonComponentModel {
+	private setFormItems(form: FormGroup): FormItems {
+		return {
+			home: this.setHomeButton(),
+			components: this.setComponents(form),
+			name: this.setName(form),
+			languague: this.setLanguage(form)
+		};
+	}
+
+	private setHomeButton(): ButtonComponentModel {
+		return new ButtonComponentModel({
+			icon: HomeIconComponent,
+			model: ButtonComponentModelType.PRIMARY
+		});
+	}
+
+	private setComponents(form: FormGroup): ButtonComponentModel {
 		return new ButtonComponentModel({
 			label: computed(() =>
 				StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().configuration)
@@ -52,38 +70,43 @@ export class HeaderMenuComponent {
 			model: ButtonComponentModelType.SECONDARY,
 			type: ButtonComponentType.SUBMIT,
 			formProperties: new FormPropertiesModel({
-				form: this.form,
+				form: form,
 				formControl: FormControls.COMPONENTS
 			})
 		});
 	}
 
-	private setName(): InputTextComponentModel {
+	private setName(form: FormGroup): InputTextComponentModel {
 		return new InputTextComponentModel({
-			label: 'Name',
+			label: computed(
+				() => `${StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().user?.name)}`
+			),
 			formProperties: new FormPropertiesModel({
-				form: this.form,
+				form: form,
 				formControl: FormControls.NAME,
 				validators: [Validators.required]
 			})
 		});
 	}
 
-	private setLanguage(): InputSelectComponentModel {
+	private setLanguage(form: FormGroup): InputSelectComponentModel {
+		const options = [
+			{ label: 'English', value: Languages.ENGLISH },
+			{ label: 'Spanish', value: Languages.SPANISH }
+		];
+		const defaultValue = this._translationService?.getCurrentLanguage();
 		return new InputSelectComponentModel({
 			placeholder: computed(
 				() => `${StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().language)}`
 			),
-			options: [
-				{ label: 'English', value: Languages.ENGLISH },
-				{ label: 'Spanish', value: Languages.SPANISH }
-			],
+			options,
 			formProperties: new FormPropertiesModel({
-				form: this.form,
-				formControl: FormControls.LANGUAGE
+				form: form,
+				formControl: FormControls.LANGUAGE,
+				defaultValue
 			}),
-			onChange: (event: unknown): void => {
-				this._translationService.setTranslationLanguage(event as Languages);
+			onChange: async (event: unknown): Promise<void> => {
+				await this._translationService.setTranslationLanguage(event as Languages);
 			}
 		});
 	}
