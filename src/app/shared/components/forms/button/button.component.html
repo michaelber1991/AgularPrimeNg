@@ -6,10 +6,13 @@
 		[disabled]="input().formProperties.form.invalid"
 		(click)="input().onClick()"
 	>
-		<ng-content
-			class="app-button-icon"
-			select="[icon]"
-		></ng-content>
+		@if (input().icon) {
+			<ng-container
+				class="app-button-icon"
+				*ngComponentOutlet="input().icon!"
+			>
+			</ng-container>
+		}
 		@if (input().label()) {
 			<span>{{ input().label() }}</span>
 		}

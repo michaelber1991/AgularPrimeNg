@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, input, signal, Signal, Type } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BaseFormModel } from '../_models/base-form';
@@ -36,7 +37,7 @@ export class ButtonComponentModel extends BaseFormModel {
 @Component({
 	selector: 'app-button',
 	standalone: true,
-	imports: [ReactiveFormsModule],
+	imports: [CommonModule, ReactiveFormsModule],
 	templateUrl: './button.component.html',
 	styleUrl: './button.component.scss'
 })
