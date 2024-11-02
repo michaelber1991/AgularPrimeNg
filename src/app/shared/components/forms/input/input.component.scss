@@ -1,3 +1,31 @@
 :host {
 	display: contents;
 }
+
+.input-container {
+	position: relative;
+	input {
+		position: relative;
+		width: 100%;
+		height: 3em;
+		outline: none;
+		padding: 0 15px;
+		border-radius: 6px;
+		border: 1px solid var(--gray-light-color);
+		background-color: transparent;
+		&:focus {
+			border: 1px solid var(--dark-color);
+		}
+	}
+
+	.input-label {
+		color: var(--dark-color);
+		position: absolute;
+		padding: 0 6px;
+		top: 0;
+		left: 0;
+		margin: 0px;
+		background-color: var(--white-color);
+		transform: translate(-8%, -42%) scale(0.6);
+	}
+}

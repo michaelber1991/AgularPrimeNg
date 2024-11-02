@@ -14,7 +14,7 @@ export enum InputTextComponentType {
 }
 
 export class InputTextComponentModel extends BaseFormModel {
-	placeholder: string;
+	placeholder: Signal<string>;
 	value: string;
 	label: Signal<string>;
 	type: InputTextComponentType;
@@ -23,7 +23,7 @@ export class InputTextComponentModel extends BaseFormModel {
 	constructor(data: Partial<InputTextComponentModel> = {}) {
 		super();
 		Object.assign(this, data);
-		this.placeholder = data.placeholder || '';
+		this.placeholder = data.placeholder || signal<string>('');
 		this.value = data.value || '';
 		this.label = data.label || signal<string>('');
 		this.type = data.type || InputTextComponentType.TEXT;
