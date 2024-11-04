@@ -1,4 +1,4 @@
-import { Component, input, signal, Signal } from '@angular/core';
+import { Component, ElementRef, input, signal, Signal, ViewChild } from '@angular/core';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 
@@ -39,4 +39,10 @@ export class InputTextComponentModel extends BaseFormModel {
 })
 export class InputComponent {
 	public input = input<InputTextComponentModel>(new InputTextComponentModel({}));
+
+	@ViewChild('inputElement') inputElement!: ElementRef;
+
+	clickInput(): void {
+		this.inputElement.nativeElement.focus();
+	}
 }

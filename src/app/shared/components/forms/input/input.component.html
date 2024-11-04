@@ -1,13 +1,17 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <form [formGroup]="input().formProperties.form">
 	<div class="input-container">
 		<input
+			#inputElement
 			type="{{ input().type }}"
 			formControlName="{{ input().formProperties.formControl }}"
-			placeholder="{{ input().placeholder() }}"
+			placeholder=""
 		/>
 		<label
 			class="input-label"
 			for="{{ input().formProperties.formControl }}"
+			(click)="clickInput()"
 			>{{ input().label() }}
 		</label>
 	</div>

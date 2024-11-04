@@ -1,5 +1,8 @@
 :host {
 	display: contents;
+	--label-transition: ease-in-out 0.2s;
+	--label-transform-in: translate(-16%, -118%) scale(0.7);
+	--label-transform-out: translate(0, 0) scale(1);
 }
 
 .input-container {
@@ -16,16 +19,35 @@
 		&:focus {
 			border: 1px solid var(--dark-color);
 		}
+		&:focus + .input-label {
+			transform: var(--label-transform-in);
+			transition: var(--label-transition);
+			opacity: 1;
+		}
+		&:not(:focus) + .input-label {
+			transform: translate(0, 0) scale(1);
+			transition: var(--label-transition);
+		}
+
+		&:not(:placeholder-shown) + .input-label {
+			transform: var(--label-transform-in);
+			transition: var(--label-transition);
+			opacity: 1;
+		}
 	}
 
 	.input-label {
 		color: var(--dark-color);
 		position: absolute;
 		padding: 0 6px;
-		top: 0;
-		left: 0;
+		top: 0.9em;
+		left: 0.5em;
 		margin: 0px;
 		background-color: var(--white-color);
-		transform: translate(-8%, -42%) scale(0.6);
+		font-size: 0.85em;
+		opacity: 0.6;
+		&:hover {
+			cursor: text;
+		}
 	}
 }
