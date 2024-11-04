@@ -3,13 +3,14 @@
 }
 
 ::ng-deep .prime-table-container {
-	height: 90%;
+	height: 100%;
 
-	.p-datatable-table-containerdummy {
+	.p-datatable-table-container {
+		--p-datatable-row-selected-background: color-mix(in srgb, var(--primary-color), var(--white-color) 8%);
+		--p-datatable-row-selected-color: var(--primary-contrast-color);
+
 		height: 100%;
 		table {
-			height: 100%;
-
 			tr {
 				cursor: pointer;
 				th {
@@ -17,7 +18,7 @@
 					background-color: white;
 				}
 				td {
-					border: unset;
+					background-color: transparent;
 					&:first-child {
 						border-top-left-radius: 6px;
 						border-bottom-left-radius: 6px;
@@ -28,10 +29,21 @@
 					}
 				}
 				&:nth-child(even) {
+					td {
+						border-bottom: 1px solid var(--watermark-color);
+					}
+				}
+
+				&:nth-child(odd) {
+					td {
+						border-bottom: 1px solid var(--white-color);
+					}
+				}
+				&:nth-child(odd) + :not(.p-datatable-tbody > tr.p-datatable-row-selected) {
 					background-color: var(--watermark-color);
 					color: var(--watermark-contrast-color);
 				}
-				&:hover {
+				&:hover td {
 					background-color: var(--primary-color);
 					color: var(--primary-contrast-color);
 				}
@@ -39,7 +51,10 @@
 		}
 	}
 
-	.p-paginator-bottom {
+	.p-paginator {
+		--p-paginator-nav-button-selected-background: var(--primary-color);
+		--p-paginator-nav-button-selected-color: var(--primary-contrast-color);
+
 		border-width: 0;
 	}
 }

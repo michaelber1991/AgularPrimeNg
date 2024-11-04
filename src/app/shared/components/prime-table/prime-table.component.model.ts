@@ -13,11 +13,16 @@ export class PrimeTable<T> {
 	totalRecords: number;
 	rowsPerPageOptions: number[];
 	loading: boolean;
+	dataKey: string;
+	selectionMode: 'single' | 'multiple' | null | undefined;
+	selectedRows: T[];
 	onLazyload: (event: TableLazyLoadEvent) => Promise<void>;
-
 	constructor(data: Partial<PrimeTable<T>>) {
 		this.title = data.title || '';
 		this.columns = data.columns || [];
+		this.dataKey = data.dataKey || '';
+		this.selectionMode = data.selectionMode || PrimeTableSelectionMode.Single;
+		this.selectedRows = data.selectedRows || [];
 		this.rowsPerPageOptions = data.rowsPerPageOptions || [10, 20, 50];
 		this.totalRecords = data.totalRecords || 0;
 		this.onLazyload = data.onLazyload ?? (async (): Promise<void> => {});
@@ -28,6 +33,11 @@ export class PrimeTable<T> {
 export enum PrimeTableColumnAlignFrozen {
 	Right = 'right',
 	Left = 'left'
+}
+
+export enum PrimeTableSelectionMode {
+	Single = 'single',
+	Multiple = 'multiple'
 }
 
 export class PrimeTableColumn {

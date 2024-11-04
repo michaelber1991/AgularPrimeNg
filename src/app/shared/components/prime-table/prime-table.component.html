@@ -10,6 +10,10 @@
 		(onLazyLoad)="input().onLazyload($event)"
 		[totalRecords]="input().values().totalRecords"
 		[loading]="input().loading"
+		[selectionMode]="input().selectionMode"
+		[(selection)]="input().selectedRows"
+		[metaKeySelection]="false"
+		dataKey="{{ input().dataKey }}"
 		styleClass="prime-table-container"
 	>
 		<!-- #region Header -->
@@ -38,7 +42,7 @@
 			let-rowData
 			let-columns="columns"
 		>
-			<tr>
+			<tr [pSelectableRow]="rowData">
 				@for (column of input().columns; track $index) {
 					<td
 						pFrozenColumn

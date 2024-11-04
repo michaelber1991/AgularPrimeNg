@@ -13,4 +13,5 @@ import { PrimeTable } from './prime-table.component.model';
 })
 export class PrimeTableComponent {
 	public input = input(new PrimeTable({}));
+	public selectedProducts: unknown[] = [];
 }
