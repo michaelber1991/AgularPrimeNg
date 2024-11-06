@@ -6,46 +6,61 @@
 	height: 100%;
 
 	.p-datatable-table-container {
-		--p-datatable-row-selected-background: color-mix(in srgb, var(--primary-color), var(--white-color) 8%);
+		--selected-background-color: color-mix(in srgb, var(--primary-color), var(--white-color) 8%);
+		--selected-color: var(--primary-contrast-color);
+		--p-datatable-row-selected-background: var(--selected-background-color);
 		--p-datatable-row-selected-color: var(--primary-contrast-color);
+		--border-radius: 6px;
 
 		height: 100%;
+
 		table {
 			tr {
 				cursor: pointer;
 				th {
 					border-bottom: 2px solid var(--dark-color);
-					background-color: white;
 				}
 				td {
-					background-color: transparent;
 					&:first-child {
-						border-top-left-radius: 6px;
-						border-bottom-left-radius: 6px;
+						border-top-left-radius: var(--border-radius);
+						border-bottom-left-radius: var(--border-radius);
 					}
 					&:last-child {
-						border-top-right-radius: 6px;
-						border-bottom-right-radius: 6px;
+						border-top-right-radius: var(--border-radius);
+						border-bottom-right-radius: var(--border-radius);
 					}
 				}
 				&:nth-child(even) {
-					td {
+					td,
+					.p-datatable-frozen-column {
 						border-bottom: 1px solid var(--watermark-color);
+						background: var(--watermark-color);
+						color: var(--watermark-contrast-color);
 					}
 				}
 
 				&:nth-child(odd) {
 					td {
 						border-bottom: 1px solid var(--white-color);
+						background: var(--white-color);
+						color: var(--dark-color);
 					}
 				}
 				&:nth-child(odd) + :not(.p-datatable-tbody > tr.p-datatable-row-selected) {
 					background-color: var(--watermark-color);
 					color: var(--watermark-contrast-color);
 				}
-				&:hover td {
+				&:hover td,
+				&:hover .p-datatable-frozen-column {
 					background-color: var(--primary-color);
 					color: var(--primary-contrast-color);
+				}
+			}
+
+			.p-datatable-tbody > tr.p-datatable-row-selected {
+				td {
+					background: var(--selected-background-color);
+					color: var(--selected-color);
 				}
 			}
 		}
