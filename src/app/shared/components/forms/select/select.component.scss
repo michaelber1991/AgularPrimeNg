@@ -1,3 +1,15 @@
 :host {
 	display: contents;
 }
+
+.app-select-container {
+	--p-select-option-selected-focus-background: var(--primary-color);
+	--p-select-option-selected-focus-color: var(--primary-contrast-color);
+	--p-select-option-selected-background: var(--primary-color);
+	--p-select-option-selected-color: var(--primary-contrast-color);
+	--p-select-focus-border-color: var(--dark-color);
+	--p-select-border-color: var(--gray-light-color);
+	--p-select-option-focus-background: var(--gray-light-color);
+	--p-select-option-focus-color: var(--dark-color);
+	--p-select-border-radius: 6px;
+}
