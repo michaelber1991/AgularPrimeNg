@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Signal, signal } from '@angular/core';
 import { TableLazyLoadEvent } from 'primeng/table';
 
@@ -8,7 +9,7 @@ export type PrimeTableValues<T> = {
 
 export class PrimeTable<T> {
 	title: string;
-	columns: PrimeTableColumn[];
+	columns: PrimeTableColumn<any>[];
 	values = signal<PrimeTableValues<T>>({ data: [], totalRecords: 0 });
 	totalRecords: number;
 	rowsPerPageOptions: number[];
@@ -40,17 +41,33 @@ export enum PrimeTableSelectionMode {
 	Multiple = 'multiple'
 }
 
-export class PrimeTableColumn {
+export class PrimeTableColumn<T> {
+	type: PrimeTableColumnType<T>;
 	isFrozen: boolean;
 	property: string;
 	header: Signal<string>;
 	minWidth: string;
 	alignFrozen: PrimeTableColumnAlignFrozen;
-	constructor(data: Partial<PrimeTableColumn>) {
+	constructor(data: Partial<PrimeTableColumn<T>>) {
+		this.type = data.type || new PrimeTableColumnType({});
 		this.isFrozen = data.isFrozen || false;
 		this.property = data.property || '';
 		this.header = data.header || signal<string>('');
 		this.minWidth = data.minWidth || '';
 		this.alignFrozen = data.alignFrozen || PrimeTableColumnAlignFrozen.Left;
 	}
+}
+
+export class PrimeTableColumnType<T> {
+	type: PrimeTableColumnTypes;
+	input: T;
+	constructor(data: Partial<PrimeTableColumnType<T>>) {
+		this.type = data.type || PrimeTableColumnTypes.TEXT;
+		this.input = data.input || ('' as T);
+	}
+}
+
+export enum PrimeTableColumnTypes {
+	TEXT = 'text',
+	AVATAR = 'avatar'
 }

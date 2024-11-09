@@ -50,7 +50,11 @@
 						[frozen]="column.isFrozen"
 						[ngStyle]="{ 'min-width': column.minWidth }"
 					>
-						{{ rowData[column.property] }}
+						@if (column.type.type === 'avatar') {
+							<app-avatar [input]="setAvatarColumnType(rowData[column.property], column)"></app-avatar>
+						} @else {
+							{{ rowData[column.property] }}
+						}
 					</td>
 				}
 			</tr>

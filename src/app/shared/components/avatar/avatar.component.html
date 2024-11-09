@@ -1,0 +1,15 @@
+<div
+	class="avatar-container {{ input().shape }}"
+	[style.height]="input().height"
+	[style.width]="input().width"
+>
+	@if (input().src === '') {
+		<div class="avatar-placeholder"></div>
+	} @else {
+		<img
+			src="{{ input().src }}"
+			(click)="input().onClick()"
+			alt=""
+		/>
+	}
+</div>

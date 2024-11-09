@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { AvatarComponent, AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
 import {
 	ButtonComponent,
 	ButtonComponentModel,
@@ -27,12 +28,13 @@ interface FormItems {
 	components: ButtonComponentModel;
 	home: ButtonComponentModel;
 	languague: InputSelectComponentModel;
+	avatar: AvatarComponentModel;
 }
 
 @Component({
 	selector: 'app-header-menu',
 	standalone: true,
-	imports: [CommonModule, ButtonComponent, HomeIconComponent, InputComponent, SelectComponent],
+	imports: [CommonModule, ButtonComponent, InputComponent, SelectComponent, AvatarComponent],
 	templateUrl: './header-menu.component.html',
 	styleUrl: './header-menu.component.scss'
 })
@@ -50,7 +52,8 @@ export class HeaderMenuComponent implements OnInit {
 			home: this.setHomeButton(),
 			components: this.setComponents(form),
 			name: this.setName(form),
-			languague: this.setLanguage(form)
+			languague: this.setLanguage(form),
+			avatar: this.setAvatar()
 		};
 	}
 
@@ -108,6 +111,16 @@ export class HeaderMenuComponent implements OnInit {
 			onChange: async (event: unknown): Promise<void> => {
 				await this._translationService.setTranslationLanguage(event as Languages);
 			}
+		});
+	}
+
+	private setAvatar(): AvatarComponentModel {
+		return new AvatarComponentModel({
+			src: 'https://reqres.in/img/faces/11-image.jpg',
+			width: '40px',
+			height: '40px',
+			shape: AvatarShape.CIRCLE,
+			onClick: (): void => {}
 		});
 	}
 }
