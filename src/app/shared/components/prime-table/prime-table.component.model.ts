@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Signal, signal } from '@angular/core';
 import { TableLazyLoadEvent } from 'primeng/table';
 
@@ -9,7 +8,7 @@ export type PrimeTableValues<T> = {
 
 export class PrimeTable<T> {
 	title: string;
-	columns: PrimeTableColumn<any>[];
+	columns: PrimeTableColumn[];
 	values = signal<PrimeTableValues<T>>({ data: [], totalRecords: 0 });
 	totalRecords: number;
 	rowsPerPageOptions: number[];
@@ -41,14 +40,15 @@ export enum PrimeTableSelectionMode {
 	Multiple = 'multiple'
 }
 
-export class PrimeTableColumn<T> {
-	type: PrimeTableColumnType<T>;
+export class PrimeTableColumn {
+	/* eslint-disable @typescript-eslint/no-explicit-any */
+	type: PrimeTableColumnType<any>;
 	isFrozen: boolean;
 	property: string;
-	header: Signal<string>;
+	header: Signal<string | undefined>;
 	minWidth: string;
 	alignFrozen: PrimeTableColumnAlignFrozen;
-	constructor(data: Partial<PrimeTableColumn<T>>) {
+	constructor(data: Partial<PrimeTableColumn>) {
 		this.type = data.type || new PrimeTableColumnType({});
 		this.isFrozen = data.isFrozen || false;
 		this.property = data.property || '';

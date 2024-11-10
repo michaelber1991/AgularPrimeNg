@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, Signal, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { UsersService } from '@data-access/users/application/users.service';
 import { IUserModel } from '@data-access/users/domain/users.model';
 import { AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
@@ -22,7 +22,7 @@ import { firstValueFrom } from 'rxjs';
 	styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-	public tableInput!: Signal<PrimeTable<IUserModel>>;
+	public tableInput!: WritableSignal<PrimeTable<IUserModel>>;
 
 	private _usersService = inject(UsersService);
 	public _translationService = inject(TranslationService);
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 		this.tableInput = this.setTableInput();
 	}
 
-	private setTableInput(): Signal<PrimeTable<IUserModel>> {
+	private setTableInput(): WritableSignal<PrimeTable<IUserModel>> {
 		return signal<PrimeTable<IUserModel>>(
 			new PrimeTable<IUserModel>({
 				title: 'Users ',
@@ -54,15 +54,15 @@ export class HomeComponent implements OnInit {
 		);
 	}
 
-	private setTableColumns(): PrimeTableColumn<unknown>[] {
+	private setTableColumns(): PrimeTableColumn[] {
 		return [
-			new PrimeTableColumn<AvatarComponentModel>({
+			new PrimeTableColumn({
 				property: 'avatar',
 				header: computed(() =>
 					StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().user?.avatar)
 				),
 				isFrozen: true,
-				type: new PrimeTableColumnType({
+				type: new PrimeTableColumnType<AvatarComponentModel>({
 					type: PrimeTableColumnTypes.AVATAR,
 					input: new AvatarComponentModel({
 						width: '70px',

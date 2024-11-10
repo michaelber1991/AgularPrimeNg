@@ -51,7 +51,7 @@
 					color: var(--watermark-contrast-color);
 				}
 				&:hover td,
-				&:hover .p-datatable-frozen-column {
+				&:hover td.p-datatable-frozen-column {
 					background-color: var(--primary-color);
 					color: var(--primary-contrast-color);
 				}
@@ -69,7 +69,6 @@
 	.p-paginator {
 		--p-paginator-nav-button-selected-background: var(--primary-color);
 		--p-paginator-nav-button-selected-color: var(--primary-contrast-color);
-
 		border-width: 0;
 	}
 }

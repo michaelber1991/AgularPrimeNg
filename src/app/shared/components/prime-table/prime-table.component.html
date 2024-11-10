@@ -51,7 +51,7 @@
 						[ngStyle]="{ 'min-width': column.minWidth }"
 					>
 						@if (column.type.type === 'avatar') {
-							<app-avatar [input]="setAvatarColumnType(rowData[column.property], column)"></app-avatar>
+							<app-avatar [input]="setAvatarColumnType(rowData[column.property], column.type)"></app-avatar>
 						} @else {
 							{{ rowData[column.property] }}
 						}
