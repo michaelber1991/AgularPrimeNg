@@ -117,8 +117,8 @@ export class HeaderMenuComponent implements OnInit {
 	private setAvatar(): AvatarComponentModel {
 		return new AvatarComponentModel({
 			src: 'https://reqres.in/img/faces/11-image.jpg',
-			width: '40px',
-			height: '40px',
+			width: '50px',
+			height: '50px',
 			shape: AvatarShape.CIRCLE,
 			onClick: (): void => {}
 		});

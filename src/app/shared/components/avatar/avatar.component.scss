@@ -25,7 +25,7 @@
 		background-image: repeating-conic-gradient(
 			from var(--angle),
 			var(--warning-color),
-			var(--gray-light-color),
+			var(--primary-color),
 			var(--success-color)
 		);
 		transition: 0.4s ease-in-out;
