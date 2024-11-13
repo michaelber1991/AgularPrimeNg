@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { AvatarComponent, AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
@@ -34,7 +33,7 @@ interface FormItems {
 @Component({
 	selector: 'app-header-menu',
 	standalone: true,
-	imports: [CommonModule, ButtonComponent, InputComponent, SelectComponent, AvatarComponent],
+	imports: [ButtonComponent, InputComponent, SelectComponent, AvatarComponent],
 	templateUrl: './header-menu.component.html',
 	styleUrl: './header-menu.component.scss'
 })
