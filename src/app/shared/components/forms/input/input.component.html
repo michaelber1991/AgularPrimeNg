@@ -1,5 +1,12 @@
 <form [formGroup]="input().formProperties.form">
-	<div class="input-container">
+	<div
+		class="input-container"
+		[ngClass]="{
+			'invalid-input-form':
+				input().formProperties.form.get(input().formProperties.formControl)?.invalid &&
+				input().formProperties.form.get(input().formProperties.formControl)?.touched
+		}"
+	>
 		<input
 			#inputElement
 			type="{{ input().type }}"
@@ -12,5 +19,11 @@
 			(click)="clickInput()"
 			>{{ input().label() }}
 		</label>
+		@if (
+			input().formProperties.form.get(input().formProperties.formControl)?.invalid &&
+			input().formProperties.form.get(input().formProperties.formControl)?.touched
+		) {
+			<app-exclamation-filled-icon class="app-input-warning-icon"> </app-exclamation-filled-icon>
+		}
 	</div>
 </form>

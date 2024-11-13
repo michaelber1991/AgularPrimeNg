@@ -2,8 +2,10 @@ import { Component, ElementRef, input, signal, Signal, ViewChild } from '@angula
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 
+import { CommonModule } from '@angular/common';
 import { Type } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ExclamationFilledIconComponent } from '@shared/icons/exclamation-filled-icon.component';
 import { BaseFormModel } from '../_models/base-form';
 
 export enum InputTextComponentType {
@@ -33,7 +35,7 @@ export class InputTextComponentModel extends BaseFormModel {
 @Component({
 	selector: 'app-input',
 	standalone: true,
-	imports: [InputTextModule, FloatLabelModule, ReactiveFormsModule],
+	imports: [InputTextModule, FloatLabelModule, ReactiveFormsModule, ExclamationFilledIconComponent, CommonModule],
 	templateUrl: './input.component.html',
 	styleUrl: './input.component.scss'
 })
