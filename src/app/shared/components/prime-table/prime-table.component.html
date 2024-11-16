@@ -7,7 +7,7 @@
 		[paginator]="true"
 		[scrollable]="true"
 		[lazy]="true"
-		(onLazyLoad)="input().onLazyload($event)"
+		(onLazyLoad)="onLazyload($event)"
 		[totalRecords]="input().values().totalRecords"
 		[loading]="input().loading"
 		[selectionMode]="input().selectionMode"
@@ -40,6 +40,7 @@
 		<ng-template
 			pTemplate="body"
 			let-rowData
+			let-rowIndex="rowIndex"
 			let-columns="columns"
 		>
 			<tr [pSelectableRow]="rowData">
@@ -50,10 +51,24 @@
 						[frozen]="column.isFrozen"
 						[ngStyle]="{ 'min-width': column.minWidth }"
 					>
-						@if (column.type.type === 'avatar') {
-							<app-avatar [input]="setAvatarColumnType(rowData[column.property], column.type)"></app-avatar>
-						} @else {
-							{{ rowData[column.property] }}
+						@switch (column.type.type) {
+							@case (PrimeTableColumnTypes.AVATAR) {
+								<app-avatar [input]="setAvatarColumnType(rowData[column.property], column.type)"></app-avatar>
+							}
+							@default {
+								@if (column.type.type === PrimeTableColumnTypes.TEXT || !input().editMode) {
+									{{ rowData[column.property] }}
+								}
+								@if (input().editMode) {
+									@switch (column.type.type) {
+										@case (PrimeTableColumnTypes.INPUT) {
+											<app-input
+												[input]="setInputColumnType(rowData[column.property], column.type, rowIndex)"
+											></app-input>
+										}
+									}
+								}
+							}
 						}
 					</td>
 				}

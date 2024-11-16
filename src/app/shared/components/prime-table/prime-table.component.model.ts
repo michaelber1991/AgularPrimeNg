@@ -1,4 +1,5 @@
 import { Signal, signal } from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
 import { TableLazyLoadEvent } from 'primeng/table';
 
 export type PrimeTableValues<T> = {
@@ -10,16 +11,19 @@ export class PrimeTable<T> {
 	title: string;
 	columns: PrimeTableColumn[];
 	values = signal<PrimeTableValues<T>>({ data: [], totalRecords: 0 });
+	formArray: FormArray<FormGroup>;
 	totalRecords: number;
 	rowsPerPageOptions: number[];
 	loading: boolean;
 	dataKey: string;
 	selectionMode: 'single' | 'multiple' | null | undefined;
 	selectedRows: T[];
+	editMode: boolean;
 	onLazyload: (event: TableLazyLoadEvent) => Promise<void>;
 	constructor(data: Partial<PrimeTable<T>>) {
 		this.title = data.title || '';
 		this.columns = data.columns || [];
+		this.formArray = data.formArray || new FormArray<FormGroup>([]);
 		this.dataKey = data.dataKey || '';
 		this.selectionMode = data.selectionMode || PrimeTableSelectionMode.Single;
 		this.selectedRows = data.selectedRows || [];
@@ -27,6 +31,7 @@ export class PrimeTable<T> {
 		this.totalRecords = data.totalRecords || 0;
 		this.onLazyload = data.onLazyload ?? (async (): Promise<void> => {});
 		this.loading = data.loading || false;
+		this.editMode = data.editMode || false;
 	}
 }
 
@@ -48,6 +53,7 @@ export class PrimeTableColumn {
 	header: Signal<string | undefined>;
 	minWidth: string;
 	alignFrozen: PrimeTableColumnAlignFrozen;
+
 	constructor(data: Partial<PrimeTableColumn>) {
 		this.type = data.type || new PrimeTableColumnType({});
 		this.isFrozen = data.isFrozen || false;
@@ -59,7 +65,7 @@ export class PrimeTableColumn {
 }
 
 export class PrimeTableColumnType<T> {
-	type: PrimeTableColumnTypes;
+	type: PrimeTableColumnTypesType;
 	input: T;
 	constructor(data: Partial<PrimeTableColumnType<T>>) {
 		this.type = data.type || PrimeTableColumnTypes.TEXT;
@@ -67,7 +73,10 @@ export class PrimeTableColumnType<T> {
 	}
 }
 
-export enum PrimeTableColumnTypes {
-	TEXT = 'text',
-	AVATAR = 'avatar'
-}
+export const PrimeTableColumnTypes = {
+	TEXT: 'text',
+	INPUT: 'input',
+	AVATAR: 'avatar'
+};
+
+export type PrimeTableColumnTypesType = (typeof PrimeTableColumnTypes)[keyof typeof PrimeTableColumnTypes];

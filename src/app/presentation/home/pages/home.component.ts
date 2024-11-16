@@ -1,7 +1,10 @@
 import { Component, computed, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '@data-access/users/application/users.service';
 import { IUserModel } from '@data-access/users/domain/users.model';
 import { AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
+import { FormPropertiesModel } from '@shared/components/forms/_models/base-form';
+import { InputTextComponentModel } from '@shared/components/forms/input/input.component';
 import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
 import {
 	PrimeTable,
@@ -13,6 +16,10 @@ import {
 import { StringFormatter } from '@shared/utils/string-formater';
 import { TranslationService } from 'assets/i18n/translation.service';
 import { firstValueFrom } from 'rxjs';
+
+enum FormControls {
+	FIRST_NAME = 'first_name'
+}
 
 @Component({
 	selector: 'app-home',
@@ -68,17 +75,37 @@ export class HomeComponent implements OnInit {
 						width: '70px',
 						height: '70px',
 						shape: AvatarShape.SQUARE,
-						onClick: (): void => {}
+						onClick: (): void => {
+							this.tableInput.update(() => {
+								return {
+									...this.tableInput(),
+									editMode: !this.tableInput().editMode
+								};
+							});
+						}
 					})
 				})
 			}),
+
 			new PrimeTableColumn({
 				property: 'first_name',
 				header: computed(() =>
 					StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().user?.name)
 				),
-				isFrozen: false
+				isFrozen: false,
+				type: new PrimeTableColumnType<InputTextComponentModel>({
+					type: PrimeTableColumnTypes.INPUT,
+					input: new InputTextComponentModel({
+						label: computed(() => ``),
+						formProperties: new FormPropertiesModel({
+							form: new FormGroup({}),
+							formControl: FormControls.FIRST_NAME,
+							validators: [Validators.required]
+						})
+					})
+				})
 			}),
+
 			new PrimeTableColumn({
 				property: 'last_name',
 				header: computed(() =>
