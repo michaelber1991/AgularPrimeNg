@@ -30,4 +30,9 @@ export enum AvatarShape {
 })
 export class AvatarComponent {
 	public input = input<AvatarComponentModel>(new AvatarComponentModel({}));
+
+	onClick(event: MouseEvent): void {
+		event.stopPropagation();
+		this.input().onClick();
+	}
 }
