@@ -9,7 +9,8 @@
 			"avatar": "avatar",
 			"name": "nombre",
 			"lastName": "apellido",
-			"email": "correo"
+			"email": "correo",
+			"password": "contraseña"
 		}
 	}
 }
