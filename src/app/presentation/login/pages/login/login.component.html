@@ -1,0 +1,40 @@
+<div class="login-container">
+	<div
+		class="login-card"
+		[ngClass]="{ expanded: isDisclamer }"
+	>
+		@if (!isDisclamer) {
+			<div class="login-card-form-container">
+				<h4 class="login-title">Taxonomy Referencial System</h4>
+				<div class="login-card-form-inputs-container">
+					<app-input [input]="formItems.name" />
+					<app-input [input]="formItems.password" />
+					<app-button [input]="formItems.signIn" />
+				</div>
+				<div>Airbus A320neo</div>
+			</div>
+			<div class="login-card-welcome-container">
+				<h1 class="login-welcome-title">Welcome to <span>TRS</span></h1>
+				<app-button [input]="formItems.disclaimer" />
+			</div>
+		} @else {
+			<div
+				class="login-disclamer"
+				[ngClass]="{ expanded: isDisclamer }"
+			>
+				<div class="login-disclamer-title-container">
+					<h4 class="login-disclamer-title"><app-exclamation-filled-icon></app-exclamation-filled-icon> Disclaimer</h4>
+					<app-button [input]="formItems.closeDisclaimer" />
+				</div>
+
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+					magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+					est laborum.
+				</p>
+			</div>
+		}
+	</div>
+</div>
