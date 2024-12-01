@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppRoutes } from '@core/routes/routes';
 import { FormPropertiesModel } from '@shared/components/forms/_models/base-form';
 import {
 	ButtonComponent,
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
 	public formItems!: FormItems;
 	public isDisclamer = false;
 	private _translationService = inject(TranslationService);
+	private _router = inject(Router);
 
 	ngOnInit(): void {
 		this.formItems = this.setFormItems(this.form);
@@ -93,6 +96,9 @@ export class LoginComponent implements OnInit {
 		return new ButtonComponentModel({
 			label: computed(() => StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().continue)),
 			model: ButtonComponentModelType.PRIMARY,
+			onClick: (): void => {
+				this._router.navigate([AppRoutes.HOME]);
+			},
 			formProperties: new FormPropertiesModel({
 				form: form,
 				formControl: FormControls.SIGN_IN
