@@ -50,6 +50,9 @@ dependencies:
   keycloak-angular:
     specifier: ^19.0.2
     version: 19.0.2(@angular/common@19.0.5)(@angular/core@19.0.5)(@angular/router@19.0.5)(keycloak-js@26.0.7)
+  keycloak-js:
+    specifier: ^26.0.7
+    version: 26.0.7
   primeicons:
     specifier: ^7.0.0
     version: 7.0.0
