@@ -34,7 +34,6 @@ export class InputTextComponentModel extends BaseFormModel {
 
 @Component({
 	selector: 'app-input',
-	standalone: true,
 	imports: [InputTextModule, FloatLabelModule, ReactiveFormsModule, ExclamationFilledIconComponent, CommonModule],
 	templateUrl: './input.component.html',
 	styleUrl: './input.component.scss'

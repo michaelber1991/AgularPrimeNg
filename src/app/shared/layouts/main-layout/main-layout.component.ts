@@ -5,7 +5,6 @@ import { ContentLayoutComponent } from '@shared/layouts/content-layout/content-l
 
 @Component({
 	selector: 'app-main-layout',
-	standalone: true,
 	imports: [HeaderMenuComponent, ContentLayoutComponent, RouterOutlet],
 	template: `<div class="main-layout-container">
 		<app-header-menu />

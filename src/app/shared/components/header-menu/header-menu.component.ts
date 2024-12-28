@@ -32,7 +32,6 @@ interface FormItems {
 
 @Component({
 	selector: 'app-header-menu',
-	standalone: true,
 	imports: [ButtonComponent, InputComponent, SelectComponent, AvatarComponent],
 	templateUrl: './header-menu.component.html',
 	styleUrl: './header-menu.component.scss'

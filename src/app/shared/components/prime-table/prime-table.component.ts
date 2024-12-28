@@ -14,7 +14,6 @@ import { PrimeTable } from './prime-table.component.model';
 
 @Component({
 	selector: 'app-prime-table',
-	standalone: true,
 	imports: [TableModule, CardLayoutComponent, CommonModule, AvatarComponent, InputComponent],
 	templateUrl: './prime-table.component.html',
 	styleUrl: './prime-table.component.scss'

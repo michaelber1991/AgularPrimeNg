@@ -35,7 +35,6 @@ interface FormItems {
 
 @Component({
 	selector: 'app-login',
-	standalone: true,
 	imports: [ButtonComponent, InputComponent, CommonModule, ExclamationFilledIconComponent],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.scss'

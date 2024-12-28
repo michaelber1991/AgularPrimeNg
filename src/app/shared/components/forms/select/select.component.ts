@@ -38,7 +38,6 @@ export interface InputSelectComponentOptionsModel {
 
 @Component({
 	selector: 'app-select',
-	standalone: true,
 	imports: [ReactiveFormsModule, SelectModule],
 	templateUrl: './select.component.html',
 	styleUrl: './select.component.scss'

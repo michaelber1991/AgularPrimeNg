@@ -36,7 +36,6 @@ export class ButtonComponentModel extends BaseFormModel {
 
 @Component({
 	selector: 'app-button',
-	standalone: true,
 	imports: [CommonModule, ReactiveFormsModule],
 	templateUrl: './button.component.html',
 	styleUrl: './button.component.scss'
