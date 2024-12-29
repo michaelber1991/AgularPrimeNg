@@ -37,6 +37,7 @@
 		"express": "^4.18.2",
 		"keycloak-angular": "^19.0.2",
 		"keycloak-js": "^26.0.7",
+		"pnpm": "^9.15.2",
 		"primeicons": "^7.0.0",
 		"primeng": "19.0.2",
 		"rxjs": "~7.8.0",

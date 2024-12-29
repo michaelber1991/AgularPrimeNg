@@ -6,6 +6,7 @@ import { provideRouter } from '@angular/router';
 import { USERS_API_PROVIDER } from '@data-access/users/infrastructure/users-api.provider';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideKeycloak } from 'keycloak-angular';
 import { routes } from './app.routes';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -18,6 +19,17 @@ export const appConfig: ApplicationConfig = {
 		provideClientHydration(),
 		provideAnimations(),
 		provideHttpClient(withFetch()),
+		provideKeycloak({
+			config: {
+				url: 'keycloak-server-url',
+				realm: 'realm-id',
+				clientId: 'client-id'
+			},
+			initOptions: {
+				onLoad: 'check-sso',
+				silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'
+			}
+		}),
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,

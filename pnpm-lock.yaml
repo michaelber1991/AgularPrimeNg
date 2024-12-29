@@ -53,6 +53,9 @@ dependencies:
   keycloak-js:
     specifier: ^26.0.7
     version: 26.0.7
+  pnpm:
+    specifier: ^9.15.2
+    version: 9.15.2
   primeicons:
     specifier: ^7.0.0
     version: 7.0.0
@@ -11132,6 +11135,12 @@ packages:
   /png-js@1.0.0:
     resolution: {integrity: sha512-k+YsbhpA9e+EFfKjTCH3VW6aoKlyNYI6NYdTfDL4CIvFnvsuO84ttonmZE7rc+v23SLTH8XX+5w/Ak9v0xGY4g==}
     dev: true
+
+  /pnpm@9.15.2:
+    resolution: {integrity: sha512-k+V7ASbw33TOa/8paAOUwLpU7Ecka5zzIfASHY2bsD91CnBfJO3DwRgIU6/XwsO5QZbQo9U9PgadnieT7xHzIQ==}
+    engines: {node: '>=18.12'}
+    hasBin: true
+    dev: false
 
   /polished@4.3.1:
     resolution: {integrity: sha512-OBatVyC/N7SCW/FaDHrSd+vn0o5cS855TOmYi4OkdWUMSJCET/xip//ch8xGUvtr3i44X9LVyWwQlRMTN3pwSA==}
