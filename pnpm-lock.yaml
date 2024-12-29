@@ -133,6 +133,9 @@ devDependencies:
   '@types/jasmine':
     specifier: ~5.1.0
     version: 5.1.4
+  '@types/keycloak-js':
+    specifier: ^3.4.1
+    version: 3.4.1
   '@types/node':
     specifier: ^18.18.0
     version: 18.19.50
@@ -5647,6 +5650,13 @@ packages:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
 
+  /@types/keycloak-js@3.4.1:
+    resolution: {integrity: sha512-uWB18tdjmnABDxfS7XQULAy4rrL7mGxy1SN+ijvHJPbcIAhtZWqcJHrcMKruw7Eh4TKnLlK+vmIEmZDtpHFQmA==}
+    deprecated: This is a stub types definition for keycloak-js (https://github.com/keycloak/keycloak). keycloak-js provides its own type definitions, so you don't need @types/keycloak-js installed!
+    dependencies:
+      keycloak-js: 26.0.7
+    dev: true
+
   /@types/lodash@4.17.7:
     resolution: {integrity: sha512-8wTvZawATi/lsmNu10/j2hk1KEP0IvjubqPE3cu1Xz7xfXXt5oCq3SNUz4fMIP4XGF9Ky+Ue2tBA3hcS7LSBlA==}
     dev: true
@@ -9762,7 +9772,6 @@ packages:
 
   /keycloak-js@26.0.7:
     resolution: {integrity: sha512-vKCk1ISMiouYRLjMzi5fKp58RnYxKEBS29BoDgVfYwVW94IXchj9jLqBvIet31VD1v79l3WaWT+WMX7fH8O4wA==}
-    dev: false
 
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
