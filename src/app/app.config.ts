@@ -1,17 +1,33 @@
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { USERS_API_PROVIDER } from '@data-access/users/infrastructure/users-api.provider';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { provideKeycloak } from 'keycloak-angular';
 import { routes } from './app.routes';
 
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+export const HttpLoaderFactory = (http: HttpClient): TranslateHttpLoader => {
 	return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
-}
+};
+
+// const keycloakProvider = (): EnvironmentProviders => {
+// 	const keycloakConfig: ProvideKeycloakOptions = {
+// 		config: {
+// 			url: 'http://localhost:8080',
+// 			realm: 'EC',
+// 			clientId: 'EC_Admin'
+// 		},
+// 		initOptions: {
+// 			onLoad: 'login-required',
+// 			flow: 'standard',
+// 			silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
+// 			checkLoginIframe: false
+// 		}
+// 	};
+// 	return provideKeycloak(keycloakConfig);
+// };
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -19,17 +35,7 @@ export const appConfig: ApplicationConfig = {
 		provideClientHydration(),
 		provideAnimations(),
 		provideHttpClient(withFetch()),
-		provideKeycloak({
-			config: {
-				url: 'keycloak-server-url',
-				realm: 'realm-id',
-				clientId: 'client-id'
-			},
-			initOptions: {
-				onLoad: 'check-sso',
-				silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'
-			}
-		}),
+		// keycloakProvider(),
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
@@ -37,6 +43,7 @@ export const appConfig: ApplicationConfig = {
 				deps: [HttpClient]
 			}
 		}).providers!,
-		USERS_API_PROVIDER
+		USERS_API_PROVIDER,
+		provideZoneChangeDetection({ eventCoalescing: true })
 	]
 };
