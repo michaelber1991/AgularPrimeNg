@@ -35,6 +35,7 @@
 		"@angular/ssr": "^19.0.6",
 		"@ngx-translate/core": "^15.0.0",
 		"@ngx-translate/http-loader": "^8.0.0",
+		"@primeng/themes": "^19.0.6",
 		"express": "^4.18.2",
 		"keycloak-angular": "19.0.2",
 		"keycloak-js": "26.0.7",
