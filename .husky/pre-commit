@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx lint-staged
+STAGED_FILES=$(git diff --name-only --cached --diff-filter=d | grep -E '\.(js|ts|tsx|json|html)$' | tr '\n' ' ')
+
+if [ -n "$STAGED_FILES" ]; then
+  npx biome check --write $STAGED_FILES && npx biome format --write $STAGED_FILES
+fi

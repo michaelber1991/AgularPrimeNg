@@ -1,0 +1,65 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
+	"files": { "ignoreUnknown": false, "ignore": [] },
+	"formatter": {
+		"enabled": true,
+		"useEditorconfig": true,
+		"formatWithErrors": false,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 120,
+		"attributePosition": "auto",
+		"bracketSpacing": true,
+		"ignore": [
+			"node_modules/*",
+			"**/package-lock.json",
+			"**/yarn.lock",
+			"**/pnpm-lock.yaml",
+			".husky/*",
+			"**/Dockerfile",
+			"**/.dockerignore",
+			".nx/*"
+		]
+	},
+	"organizeImports": { "enabled": true },
+	"linter": {
+		"enabled": true,
+		"rules": { "recommended": true },
+		"ignore": ["projects/**/*", "src/app/**/*.spec.ts", "**/node_modules/"]
+	},
+	"javascript": {
+		"formatter": {
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "none",
+			"semicolons": "always",
+			"arrowParentheses": "always",
+			"bracketSameLine": false,
+			"quoteStyle": "single",
+			"attributePosition": "auto",
+			"bracketSpacing": true
+		}
+	},
+	"overrides": [
+		{
+			"include": ["*.ts"],
+			"linter": {
+				"rules": { "complexity": { "noUselessConstructor": "error" } }
+			}
+		},
+		{ "include": ["*.html"], "linter": { "rules": {} } },
+		{
+			"include": [
+				"*.stories.@(ts|tsx|js|jsx|mjs|cjs)",
+				"*.story.@(ts|tsx|js|jsx|mjs|cjs)"
+			],
+			"linter": { "rules": { "correctness": { "useHookAtTopLevel": "off" } } }
+		},
+		{
+			"include": [".storybook/main.@(js|cjs|mjs|ts)"],
+			"linter": { "rules": {} }
+		}
+	]
+}

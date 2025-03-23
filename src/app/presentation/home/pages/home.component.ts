@@ -1,7 +1,7 @@
-import { Component, computed, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, type OnInit, type WritableSignal, computed, inject, signal } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '@data-access/users/application/users.service';
-import { IUserModel } from '@data-access/users/domain/users.model';
+import type { IUserModel } from '@data-access/users/domain/users.model';
 import { AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
 import { FormPropertiesModel } from '@shared/components/forms/_models/base-form';
 import { InputTextComponentModel } from '@shared/components/forms/input/input.component';
@@ -47,7 +47,10 @@ export class HomeComponent implements OnInit {
 				selectionMode: PrimeTableSelectionMode.Multiple,
 				onLazyload: async ({ first, rows }): Promise<void> => {
 					const users = await firstValueFrom(
-						this._usersService.getUsers({ page: first && rows ? first / rows + 1 : 1, per_page: rows ? rows : 10 })
+						this._usersService.getUsers({
+							page: first && rows ? first / rows + 1 : 1,
+							per_page: rows ? rows : 10
+						})
 					);
 					this.tableInput().values.update(() => {
 						return {
@@ -95,7 +98,7 @@ export class HomeComponent implements OnInit {
 				type: new PrimeTableColumnType<InputTextComponentModel>({
 					type: PrimeTableColumnTypes.INPUT,
 					input: new InputTextComponentModel({
-						label: computed(() => ``),
+						label: computed(() => ''),
 						formProperties: new FormPropertiesModel({
 							form: new FormGroup({}),
 							formControl: FormControls.FIRST_NAME,
