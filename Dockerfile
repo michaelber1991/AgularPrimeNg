@@ -20,7 +20,7 @@ RUN pnpm run build
 FROM nginx:alpine
 
 # Copiar la aplicación construida desde la etapa anterior
-COPY --from=build /app/dist/AppName/browser /usr/share/nginx/html
+COPY --from=build /app/dist/app-name/browser /usr/share/nginx/html
 
 # Exponer el puerto 80
 EXPOSE 80

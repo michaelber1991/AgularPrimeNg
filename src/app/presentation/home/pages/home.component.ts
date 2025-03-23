@@ -21,6 +21,13 @@ enum FormControls {
 	FIRST_NAME = 'first_name'
 }
 
+enum TableProperties {
+	AVATAR = 'avatar',
+	NAME = 'name',
+	LAST_NAME = 'last_name',
+	EMAIL = 'email'
+}
+
 @Component({
 	selector: 'app-home',
 	imports: [PrimeTableComponent],
@@ -66,7 +73,7 @@ export class HomeComponent implements OnInit {
 	private setTableColumns(): PrimeTableColumn[] {
 		return [
 			new PrimeTableColumn({
-				property: 'avatar',
+				property: TableProperties.AVATAR,
 				header: computed(() =>
 					StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().user?.avatar)
 				),
@@ -90,7 +97,7 @@ export class HomeComponent implements OnInit {
 			}),
 
 			new PrimeTableColumn({
-				property: 'first_name',
+				property: TableProperties.NAME,
 				header: computed(() =>
 					StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().user?.name)
 				),
@@ -109,14 +116,14 @@ export class HomeComponent implements OnInit {
 			}),
 
 			new PrimeTableColumn({
-				property: 'last_name',
+				property: TableProperties.LAST_NAME,
 				header: computed(() =>
 					StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().user?.lastName)
 				),
 				isFrozen: false
 			}),
 			new PrimeTableColumn({
-				property: 'email',
+				property: TableProperties.EMAIL,
 				header: computed(() =>
 					StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().user?.email)
 				),

@@ -1,5 +1,5 @@
 {
-	"name": "AppName",
+	"name": "app-name",
 	"version": "0.0.0",
 	"scripts": {
 		"ng": "ng",
@@ -8,13 +8,11 @@
 		"build-production": "ng build --configuration production",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
-		"serve:ssr:AppName": "node dist/AppName/server/server.mjs",
-		"lint": "ng lint",
+		"serve:ssr:app-name": "node dist/app-name/server/server.mjs",
 		"prepare": "husky install",
 		"format": "prettier --write \"./src/**/*.{ts,json,html,scss}\"",
-		"lint-format": "npm run format &&  eslint --fix",
-		"storybook": "ng run AppName:storybook",
-		"build-storybook": "ng run AppName:build-storybook"
+		"storybook": "ng run app-name:storybook",
+		"build-storybook": "ng run app-name:build-storybook"
 	},
 	"lint-staged": {
 		"*": "prettier --write \"./src/**/*.{ts,json,html,scss}\"",
@@ -41,7 +39,7 @@
 		"keycloak-js": "26.0.7",
 		"pnpm": "^9.15.2",
 		"primeicons": "^7.0.0",
-		"primeng": "19.0.2",
+		"primeng": "^19.0.10",
 		"rxjs": "~7.8.0",
 		"tslib": "^2.3.0",
 		"zone.js": "~0.15.0"
