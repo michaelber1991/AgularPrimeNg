@@ -1,5 +1,6 @@
 import { Component, type OnInit, type WritableSignal, computed, inject, signal } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { UserPermissionsActionsEnum, UserPermissionsScopeEnum } from '@core/permissions/user.permissions';
 import { UsersService } from '@data-access/users/application/users.service';
 import type { IUserModel } from '@data-access/users/domain/users.model';
 import { AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
@@ -13,6 +14,7 @@ import {
 	PrimeTableColumnTypes,
 	PrimeTableSelectionMode
 } from '@shared/components/prime-table/prime-table.component.model';
+import { AuthorizationService } from '@shared/services/auth.service';
 import { StringFormatter } from '@shared/utils/string-formater';
 import { TranslationService } from 'assets/i18n/translation.service';
 import { firstValueFrom } from 'rxjs';
@@ -37,10 +39,21 @@ enum TableProperties {
 export class HomeComponent implements OnInit {
 	public tableInput!: WritableSignal<PrimeTable<IUserModel>>;
 
-	private _usersService = inject(UsersService);
 	public _translationService = inject(TranslationService);
+	private _usersService = inject(UsersService);
+	private _authorizationService = inject(AuthorizationService);
+
+	public permissions = {
+		canEditUsers: this._authorizationService.canAccess(UserPermissionsScopeEnum.users, UserPermissionsActionsEnum.edit),
+		canViewUsers: this._authorizationService.canAccess(UserPermissionsScopeEnum.users, UserPermissionsActionsEnum.view),
+		canDeleteUsers: this._authorizationService.canAccess(
+			UserPermissionsScopeEnum.users,
+			UserPermissionsActionsEnum.delete
+		)
+	};
 
 	ngOnInit(): void {
+		const a = this.permissions.canDeleteUsers();
 		this.tableInput = this.setTableInput();
 	}
 

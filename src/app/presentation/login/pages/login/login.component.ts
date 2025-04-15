@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, type OnInit, computed, inject } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppRoutes } from '@core/routes/routes';
+import { AuthService } from '@data-access/auth/application/auth.service';
 import { FormPropertiesModel } from '@shared/components/forms/_models/base-form';
 import {
 	ButtonComponent,
@@ -16,8 +17,10 @@ import {
 } from '@shared/components/forms/input/input.component';
 import { ExclamationFilledIconComponent } from '@shared/icons/exclamation-filled-icon.component';
 import { HomeIconComponent } from '@shared/icons/home-icon.component';
+import { AuthorizationService } from '@shared/services/auth.service';
 import { StringFormatter } from '@shared/utils/string-formater';
 import { TranslationService } from 'assets/i18n/translation.service';
+import { firstValueFrom } from 'rxjs';
 
 enum FormControls {
 	NAME = 'name',
@@ -45,6 +48,8 @@ export class LoginComponent implements OnInit {
 	public isDisclamer = false;
 	private _translationService = inject(TranslationService);
 	private _router = inject(Router);
+	private _authorizationService = inject(AuthorizationService);
+	private _authService = inject(AuthService);
 
 	ngOnInit(): void {
 		this.formItems = this.setFormItems(this.form);
@@ -95,7 +100,13 @@ export class LoginComponent implements OnInit {
 		return new ButtonComponentModel({
 			label: computed(() => StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().continue)),
 			model: ButtonComponentModelType.PRIMARY,
-			onClick: (): void => {
+			onClick: async (): Promise<void> => {
+				const username = form.get(FormControls.NAME)?.value;
+				const password = form.get(FormControls.PASSWORD)?.value;
+
+				const response = await firstValueFrom(this._authService.credentialsLogin(username, password));
+
+				this._authorizationService.login(response.token);
 				this._router.navigate([AppRoutes.HOME]);
 			},
 			formProperties: new FormPropertiesModel({
@@ -107,7 +118,7 @@ export class LoginComponent implements OnInit {
 
 	private setDisclaimer(): ButtonComponentModel {
 		return new ButtonComponentModel({
-			label: computed(() => `Disclaimer`),
+			label: computed(() => 'Disclaimer'),
 			model: ButtonComponentModelType.SECONDARY,
 			onClick: (): void => {
 				this.toggleCardExpansion();
@@ -117,7 +128,7 @@ export class LoginComponent implements OnInit {
 
 	private setCloseDisclaimer(): ButtonComponentModel {
 		return new ButtonComponentModel({
-			label: computed(() => ``),
+			label: computed(() => ''),
 			icon: HomeIconComponent,
 			model: ButtonComponentModelType.PRIMARY,
 			onClick: (): void => {

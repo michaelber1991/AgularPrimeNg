@@ -46,15 +46,12 @@
 		{
 			"include": ["*.ts"],
 			"linter": {
-				"rules": { "complexity": { "noUselessConstructor": "error" } }
+				"rules": { "complexity": { "noUselessConstructor": "error", "useLiteralKeys": "off" } }
 			}
 		},
 		{ "include": ["*.html"], "linter": { "rules": {} } },
 		{
-			"include": [
-				"*.stories.@(ts|tsx|js|jsx|mjs|cjs)",
-				"*.story.@(ts|tsx|js|jsx|mjs|cjs)"
-			],
+			"include": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)", "*.story.@(ts|tsx|js|jsx|mjs|cjs)"],
 			"linter": { "rules": { "correctness": { "useHookAtTopLevel": "off" } } }
 		},
 		{
