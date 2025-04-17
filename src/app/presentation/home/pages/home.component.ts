@@ -5,6 +5,7 @@ import { UsersService } from '@data-access/users/application/users.service';
 import type { IUserModel } from '@data-access/users/domain/users.model';
 import { AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
 import { FormPropertiesModel } from '@shared/components/forms/_models/base-form';
+import { ButtonComponentModel, ButtonComponentOptionsModel } from '@shared/components/forms/button/button.component';
 import { InputTextComponentModel } from '@shared/components/forms/input/input.component';
 import { PrimeTableComponent } from '@shared/components/prime-table/prime-table.component';
 import {
@@ -14,6 +15,7 @@ import {
 	PrimeTableColumnTypes,
 	PrimeTableSelectionMode
 } from '@shared/components/prime-table/prime-table.component.model';
+import { SettingsIconComponent } from '@shared/icons/settings-icon.component';
 import { AuthorizationService } from '@shared/services/auth.service';
 import { StringFormatter } from '@shared/utils/string-formater';
 import { TranslationService } from 'assets/i18n/translation.service';
@@ -27,7 +29,8 @@ enum TableProperties {
 	AVATAR = 'avatar',
 	NAME = 'name',
 	LAST_NAME = 'last_name',
-	EMAIL = 'email'
+	EMAIL = 'email',
+	ACTIONS = 'actions'
 }
 
 @Component({
@@ -141,6 +144,33 @@ export class HomeComponent implements OnInit {
 					StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().user?.email)
 				),
 				isFrozen: false
+			}),
+			new PrimeTableColumn({
+				property: TableProperties.ACTIONS,
+				header: computed(() =>
+					StringFormatter.capitalizeFirstLetter(this._translationService.translationBook().options)
+				),
+				type: new PrimeTableColumnType<ButtonComponentModel>({
+					type: PrimeTableColumnTypes.BUTTON,
+					input: new ButtonComponentModel({
+						label: computed(() => ''),
+						icon: SettingsIconComponent,
+						options: [
+							new ButtonComponentOptionsModel({
+								label: computed(() => 'Options 1'),
+								onClick: (row: unknown): void => {
+									console.log('chdusjccdsjni', row);
+								}
+							}),
+							new ButtonComponentOptionsModel({
+								label: computed(() => 'Options 2')
+							}),
+							new ButtonComponentOptionsModel({
+								label: computed(() => 'Options 3')
+							})
+						]
+					})
+				})
 			})
 		];
 	}

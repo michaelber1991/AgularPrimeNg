@@ -9,12 +9,13 @@ import { CardLayoutComponent } from '@shared/layouts/card-layout/card-layout.com
 import { TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { AvatarComponent, AvatarComponentModel } from '../avatar/avatar.component';
 import { FormPropertiesModel } from '../forms/_models/base-form';
+import { ButtonComponent, ButtonComponentModel } from '../forms/button/button.component';
 import { InputComponent, InputTextComponentModel } from '../forms/input/input.component';
 import { PrimeTable } from './prime-table.component.model';
 
 @Component({
 	selector: 'app-prime-table',
-	imports: [TableModule, CardLayoutComponent, CommonModule, AvatarComponent, InputComponent],
+	imports: [TableModule, CardLayoutComponent, CommonModule, AvatarComponent, InputComponent, ButtonComponent],
 	templateUrl: './prime-table.component.html',
 	styleUrl: './prime-table.component.scss'
 })
@@ -22,6 +23,7 @@ export class PrimeTableComponent {
 	public input = input(new PrimeTable({}));
 	public PrimeTableColumnTypes = PrimeTableColumnTypes;
 	public actualFilterState!: TableLazyLoadEvent;
+	private dataOnRow: unknown;
 
 	public onLazyload(event: TableLazyLoadEvent): void {
 		this.actualFilterState = event;
@@ -50,6 +52,31 @@ export class PrimeTableComponent {
 				defaultValue: value
 			})
 		});
+	}
+
+	public setButtonColumnType(
+		value: string,
+		buttonColumnType: PrimeTableColumnType<ButtonComponentModel>,
+		index: number
+	): ButtonComponentModel {
+		return new ButtonComponentModel({
+			...buttonColumnType.input,
+			options: buttonColumnType.input.options.map((option) => {
+				option.onClickEvent = (): void => {
+					option.onClick(this.dataOnRow);
+				};
+				return option;
+			}),
+			formProperties: new FormPropertiesModel({
+				...buttonColumnType.input.formProperties,
+				form: this.input().formArray.at(index - this.actualFilterState.first!),
+				defaultValue: value
+			})
+		});
+	}
+
+	public clickOptionsButtonColumnType(row: unknown): void {
+		this.dataOnRow = row;
 	}
 
 	private setFormArray(rows: number): FormArray<FormGroup> {

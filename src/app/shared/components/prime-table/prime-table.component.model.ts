@@ -76,7 +76,8 @@ export class PrimeTableColumnType<T> {
 export const PrimeTableColumnTypes = {
 	TEXT: 'text',
 	INPUT: 'input',
-	AVATAR: 'avatar'
+	AVATAR: 'avatar',
+	BUTTON: 'button'
 };
 
 export type PrimeTableColumnTypesType = (typeof PrimeTableColumnTypes)[keyof typeof PrimeTableColumnTypes];

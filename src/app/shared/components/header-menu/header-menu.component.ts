@@ -1,10 +1,11 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { AvatarComponent, AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
 import {
 	ButtonComponent,
 	ButtonComponentModel,
 	ButtonComponentModelType,
+	ButtonComponentOptionsModel,
 	ButtonComponentType
 } from '@shared/components/forms/button/button.component';
 import { HomeIconComponent } from '@shared/icons/home-icon.component';
@@ -28,6 +29,7 @@ interface FormItems {
 	home: ButtonComponentModel;
 	languague: InputSelectComponentModel;
 	avatar: AvatarComponentModel;
+	options: ButtonComponentModel;
 }
 
 @Component({
@@ -51,7 +53,8 @@ export class HeaderMenuComponent implements OnInit {
 			components: this.setComponents(form),
 			name: this.setName(form),
 			languague: this.setLanguage(form),
-			avatar: this.setAvatar()
+			avatar: this.setAvatar(),
+			options: this.setOptions()
 		};
 	}
 
@@ -118,6 +121,26 @@ export class HeaderMenuComponent implements OnInit {
 			width: '50px',
 			height: '50px',
 			shape: AvatarShape.CIRCLE,
+			onClick: (): void => {}
+		});
+	}
+
+	private setOptions(): ButtonComponentModel {
+		return new ButtonComponentModel({
+			label: computed(() => 'Options'),
+			model: ButtonComponentModelType.PRIMARY,
+			icon: SettingsIconComponent,
+			options: [
+				new ButtonComponentOptionsModel({
+					label: computed(() => 'Options 1')
+				}),
+				new ButtonComponentOptionsModel({
+					label: computed(() => 'Options 2')
+				}),
+				new ButtonComponentOptionsModel({
+					label: computed(() => 'Options 3')
+				})
+			],
 			onClick: (): void => {}
 		});
 	}

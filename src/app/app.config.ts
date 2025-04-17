@@ -1,8 +1,9 @@
-import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { type ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
+import { authInterceptor } from '@core/interceptors/auth.interceptor';
 import { AUTH_API_PROVIDER } from '@data-access/auth/infrastructure/auth-api.provider';
 import { USERS_API_PROVIDER } from '@data-access/users/infrastructure/users-api.provider';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -20,7 +21,7 @@ export const appConfig: ApplicationConfig = {
 		provideRouter(routes),
 		provideClientHydration(),
 		provideAnimations(),
-		provideHttpClient(withFetch()),
+		provideHttpClient(withInterceptors([authInterceptor]), withFetch()),
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,

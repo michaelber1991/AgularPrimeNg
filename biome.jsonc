@@ -46,7 +46,11 @@
 		{
 			"include": ["*.ts"],
 			"linter": {
-				"rules": { "complexity": { "noUselessConstructor": "error", "useLiteralKeys": "off" } }
+				"rules": {
+					"complexity": { "noUselessConstructor": "error", "useLiteralKeys": "off" },
+					"suspicious": { "noExplicitAny": "off" },
+					"style": { "noNonNullAssertion": "off" }
+				}
 			}
 		},
 		{ "include": ["*.html"], "linter": { "rules": {} } },

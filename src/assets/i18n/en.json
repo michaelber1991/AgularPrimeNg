@@ -5,6 +5,7 @@
 		"configuration": "configuration",
 		"select": "select",
 		"language": "language",
+		"options": "options",
 		"user": {
 			"avatar": "avatar",
 			"name": "name",

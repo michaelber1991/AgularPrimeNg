@@ -8,6 +8,7 @@ export interface ITranslations {
 	configuration: string;
 	select: string;
 	language: string;
+	options: string;
 	user?: {
 		avatar: string;
 		name: string;

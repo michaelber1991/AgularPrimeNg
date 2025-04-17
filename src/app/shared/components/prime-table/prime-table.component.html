@@ -1,76 +1,53 @@
 <app-card-layout>
-	<p-table
-		[columns]="input().columns"
-		[value]="input().values().data"
-		[rows]="input().rowsPerPageOptions[0]"
-		[rowsPerPageOptions]="input().rowsPerPageOptions"
-		[paginator]="true"
-		[scrollable]="true"
-		[lazy]="true"
-		(onLazyLoad)="onLazyload($event)"
-		[totalRecords]="input().values().totalRecords"
-		[loading]="input().loading"
-		[selectionMode]="input().selectionMode"
-		[(selection)]="input().selectedRows"
-		[metaKeySelection]="false"
-		dataKey="{{ input().dataKey }}"
-		styleClass="prime-table-container"
-	>
+	<p-table [columns]="input().columns" [value]="input().values().data" [rows]="input().rowsPerPageOptions[0]"
+		[rowsPerPageOptions]="input().rowsPerPageOptions" [paginator]="true" [scrollable]="true" [lazy]="true"
+		(onLazyLoad)="onLazyload($event)" [totalRecords]="input().values().totalRecords" [loading]="input().loading"
+		[selectionMode]="input().selectionMode" [(selection)]="input().selectedRows" [metaKeySelection]="false"
+		dataKey="{{ input().dataKey }}" styleClass="prime-table-container">
 		<!-- #region Header -->
-		<ng-template
-			pTemplate="header"
-			let-columns
-		>
+		<ng-template pTemplate="header" let-columns>
 			<tr>
 				@for (column of input().columns; track $index) {
-					<th
-						pFrozenColumn
-						alignFrozen="{{ column.alignFrozen }}"
-						[frozen]="column.isFrozen"
-						[ngStyle]="{ 'min-width': column.minWidth }"
-					>
-						{{ column.header() }}
-					</th>
+				<th pFrozenColumn alignFrozen="{{ column.alignFrozen }}" [frozen]="column.isFrozen"
+					[ngStyle]="{ 'min-width': column.minWidth }">
+					{{ column.header() }}
+				</th>
 				}
 			</tr>
 		</ng-template>
 		<!-- #endregion Header -->
 
 		<!-- #region Body -->
-		<ng-template
-			pTemplate="body"
-			let-rowData
-			let-rowIndex="rowIndex"
-			let-columns="columns"
-		>
+		<ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-columns="columns">
 			<tr [pSelectableRow]="rowData">
 				@for (column of input().columns; track $index) {
-					<td
-						pFrozenColumn
-						alignFrozen="{{ column.alignFrozen }}"
-						[frozen]="column.isFrozen"
-						[ngStyle]="{ 'min-width': column.minWidth }"
-					>
-						@switch (column.type.type) {
-							@case (PrimeTableColumnTypes.AVATAR) {
-								<app-avatar [input]="setAvatarColumnType(rowData[column.property], column.type)"></app-avatar>
-							}
-							@default {
-								@if (column.type.type === PrimeTableColumnTypes.TEXT || !input().editMode) {
-									{{ rowData[column.property] }}
-								}
-								@if (input().editMode) {
-									@switch (column.type.type) {
-										@case (PrimeTableColumnTypes.INPUT) {
-											<app-input
-												[input]="setInputColumnType(rowData[column.property], column.type, rowIndex)"
-											></app-input>
-										}
-									}
-								}
-							}
-						}
-					</td>
+				<td pFrozenColumn alignFrozen="{{ column.alignFrozen }}" [frozen]="column.isFrozen"
+					[ngStyle]="{ 'min-width': column.minWidth }">
+					@switch (column.type.type) {
+					@case (PrimeTableColumnTypes.AVATAR) {
+					<app-avatar [input]="setAvatarColumnType(rowData[column.property], column.type)"></app-avatar>
+					}
+					@case (PrimeTableColumnTypes.BUTTON) {
+					<div (click)="clickOptionsButtonColumnType(rowData)">
+						<app-button
+							[input]="setButtonColumnType(rowData[column.property], column.type, rowIndex)"></app-button>
+					</div>
+					}
+					@default {
+					@if (column.type.type === PrimeTableColumnTypes.TEXT || !input().editMode) {
+					{{ rowData[column.property] }}
+					}
+					@if (input().editMode) {
+					@switch (column.type.type) {
+					@case (PrimeTableColumnTypes.INPUT) {
+					<app-input
+						[input]="setInputColumnType(rowData[column.property], column.type, rowIndex)"></app-input>
+					}
+					}
+					}
+					}
+					}
+				</td>
 				}
 			</tr>
 		</ng-template>

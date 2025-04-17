@@ -1,20 +1,23 @@
-<form [formGroup]="input().formProperties.form">
-	<button
-		class="app-button {{ input().model }}"
-		[class.disabled]="input().formProperties.form.invalid"
-		type="{{ input().type }}"
-		[disabled]="input().formProperties.form.invalid"
-		(click)="input().onClick()"
-	>
-		@if (input().icon) {
-			<ng-container
-				class="app-button-icon"
-				*ngComponentOutlet="input().icon!"
-			>
-			</ng-container>
-		}
-		@if (input().label()) {
-			<span>{{ input().label() }}</span>
-		}
-	</button>
-</form>
+<div (document:click)="handleClickOutside($event)">
+	<form [formGroup]="input().formProperties.form">
+		<div class="app-button-container" (click)="optionsVisible = !optionsVisible">
+			<button class="app-button {{ input().model }}" [class.disabled]="input().formProperties.form.invalid"
+				type="{{ input().type }}" [disabled]="input().formProperties.form.invalid" (click)="input().onClick()">
+				@if (input().icon) {
+				<ng-container class="app-button-icon" *ngComponentOutlet="input().icon!">
+				</ng-container>
+				}
+				@if (input().label()) {
+				<span>{{ input().label() }}</span>
+				}
+			</button>
+			@if (optionsVisible && input().options.length > 0) {
+			<ul class="button-options-menu">
+				@for (option of input().options; track $index) {
+				<li (click)="option.onClickEvent()">{{ option.label() }}</li>
+				}
+			</ul>
+			}
+		</div>
+	</form>
+</div>
