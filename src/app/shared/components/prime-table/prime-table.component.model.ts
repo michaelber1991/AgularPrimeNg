@@ -46,7 +46,6 @@ export enum PrimeTableSelectionMode {
 }
 
 export class PrimeTableColumn {
-	/* eslint-disable @typescript-eslint/no-explicit-any */
 	type: PrimeTableColumnType<any>;
 	isFrozen: boolean;
 	property: string;
