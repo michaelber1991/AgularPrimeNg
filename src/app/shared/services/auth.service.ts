@@ -28,12 +28,14 @@ export class AuthorizationService {
 
 	login(token: string): void {
 		localStorage.setItem(this.tokenKey, token);
+		document.cookie = `access_token=${token}; path=/; secure; samesite=None`;
 		const payload = this.decodeToken(token);
 		this.userRoles.set(payload?.roles || []);
 	}
 
 	logout(): void {
 		localStorage.removeItem(this.tokenKey);
+		document.cookie = 'access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; secure; samesite=None';
 		this.userRoles.set([]);
 		this._router.navigate([AppRoutes.LOGIN]);
 	}
