@@ -1,6 +1,16 @@
 {
-	"printWidth": 120,
-	"plugins": ["prettier-plugin-organize-attributes"],
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 100,
+	"singleQuote": true,
+	"bracketSpacing": true,
+	"bracketSameLine": false,
+	"arrowParens": "always",
+	"semi": true,
+	"quoteProps": "as-needed",
+	"jsxSingleQuote": false,
+	"endOfLine": "lf",
+
 	"organizeAttributes": {
 		"attributesPerLine": 1
 	}

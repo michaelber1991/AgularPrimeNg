@@ -6,10 +6,6 @@
 	@if (input().src === '') {
 		<div class="avatar-placeholder"></div>
 	} @else {
-		<img
-			src="{{ input().src }}"
-			(click)="onClick($event)"
-			alt=""
-		/>
+		<img (click)="onClick($event)" src="{{ input().src }}" alt="" />
 	}
 </div>
