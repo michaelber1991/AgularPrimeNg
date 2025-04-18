@@ -1,6 +1,6 @@
-import { Signal, signal } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
-import { TableLazyLoadEvent } from 'primeng/table';
+import { type Signal, signal } from '@angular/core';
+import { FormArray, type FormGroup } from '@angular/forms';
+import type { TableLazyLoadEvent } from 'primeng/table';
 
 export type PrimeTableValues<T> = {
 	data: T[];
