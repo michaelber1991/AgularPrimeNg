@@ -9,6 +9,7 @@ import { USERS_API_PROVIDER } from '@data-access/users/infrastructure/users-api.
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import Aura from '@primeng/themes/aura';
+import { MessageService } from 'primeng/api';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 
@@ -36,6 +37,7 @@ export const appConfig: ApplicationConfig = {
 			theme: {
 				preset: Aura
 			}
-		})
+		}),
+		MessageService
 	]
 };

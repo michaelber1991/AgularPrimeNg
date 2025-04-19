@@ -15,6 +15,8 @@ import {
 	InputTextComponentModel,
 	InputTextComponentType
 } from '@shared/components/forms/input/input.component';
+import { ToastComponent } from '@shared/components/toast/toast.component';
+import { ToastService } from '@shared/components/toast/toast.service';
 import { ExclamationFilledIconComponent } from '@shared/icons/exclamation-filled-icon.component';
 import { HomeIconComponent } from '@shared/icons/home-icon.component';
 import { AuthorizationService } from '@shared/services/auth.service';
@@ -38,7 +40,7 @@ interface FormItems {
 
 @Component({
 	selector: 'app-login',
-	imports: [ButtonComponent, InputComponent, CommonModule, ExclamationFilledIconComponent],
+	imports: [ButtonComponent, InputComponent, CommonModule, ExclamationFilledIconComponent, ToastComponent],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.scss'
 })
@@ -50,6 +52,7 @@ export class LoginComponent implements OnInit {
 	private _router = inject(Router);
 	private _authorizationService = inject(AuthorizationService);
 	private _authService = inject(AuthService);
+	private _toastService = inject(ToastService);
 
 	ngOnInit(): void {
 		this.formItems = this.setFormItems(this.form);
@@ -103,11 +106,13 @@ export class LoginComponent implements OnInit {
 			onClick: async (): Promise<void> => {
 				const username = form.get(FormControls.NAME)?.value;
 				const password = form.get(FormControls.PASSWORD)?.value;
-
-				const response = await firstValueFrom(this._authService.credentialsLogin(username, password));
-
-				this._authorizationService.login(response.token);
-				this._router.navigate([AppRoutes.HOME]);
+				try {
+					const response = await firstValueFrom(this._authService.credentialsLogin(username, password));
+					this._authorizationService.login(response.token);
+					this._router.navigate([AppRoutes.HOME]);
+				} catch (error) {
+					this._toastService.showError('Wrong Credentials', 'Invalid username or password');
+				}
 			},
 			formProperties: new FormPropertiesModel({
 				form: form,
