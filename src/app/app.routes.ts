@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import type { Routes } from '@angular/router';
 import { AppRoutes } from '@core/routes/routes';
 
 export const routes: Routes = [
