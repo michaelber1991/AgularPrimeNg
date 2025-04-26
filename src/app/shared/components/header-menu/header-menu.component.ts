@@ -1,5 +1,6 @@
-import { Component, OnInit, computed, inject } from '@angular/core';
+import { Component, type OnInit, computed, inject } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { UsersService } from '@data-access/users/application/users.service';
 import { AvatarComponent, AvatarComponentModel, AvatarShape } from '@shared/components/avatar/avatar.component';
 import {
 	ButtonComponent,
@@ -13,6 +14,7 @@ import { SettingsIconComponent } from '@shared/icons/settings-icon.component';
 import { StringFormatter } from '@shared/utils/string-formater';
 import { Languages } from 'assets/i18n/languages';
 import { TranslationService } from 'assets/i18n/translation.service';
+import { firstValueFrom } from 'rxjs';
 import { FormPropertiesModel } from '../forms/_models/base-form';
 import { InputComponent, InputTextComponentModel } from '../forms/input/input.component';
 import { InputSelectComponentModel, SelectComponent } from '../forms/select/select.component';
@@ -42,6 +44,7 @@ export class HeaderMenuComponent implements OnInit {
 	public form = new FormGroup({});
 	public formItems!: FormItems;
 	private _translationService = inject(TranslationService);
+	private _userService = inject(UsersService);
 
 	ngOnInit(): void {
 		this.formItems = this.setFormItems(this.form);
@@ -61,7 +64,10 @@ export class HeaderMenuComponent implements OnInit {
 	private setHomeButton(): ButtonComponentModel {
 		return new ButtonComponentModel({
 			icon: HomeIconComponent,
-			model: ButtonComponentModelType.PRIMARY
+			model: ButtonComponentModelType.PRIMARY,
+			onClick: async (): Promise<void> => {
+				const response = await firstValueFrom(this._userService.createUsers());
+			}
 		});
 	}
 

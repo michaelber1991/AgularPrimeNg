@@ -4,4 +4,5 @@ import type { IUserEntity } from './entities/users.entity';
 
 export abstract class IUsersApiService {
 	abstract getUsers(basePaginatorRequest: BasePaginatorRequest): Observable<BasePaginatorResponse<IUserEntity>>;
+	abstract createUsers(): Observable<BasePaginatorResponse<IUserEntity>>;
 }

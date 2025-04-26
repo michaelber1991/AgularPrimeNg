@@ -5,6 +5,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { authInterceptor } from '@core/interceptors/auth.interceptor';
 import { AUTH_API_PROVIDER } from '@data-access/auth/infrastructure/auth-api.provider';
+import { NOTIFICATION_API_PROVIDER } from '@data-access/notifications/infrastructure/notification-api.provider';
 import { USERS_API_PROVIDER } from '@data-access/users/infrastructure/users-api.provider';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -32,6 +33,7 @@ export const appConfig: ApplicationConfig = {
 		}).providers ?? [],
 		USERS_API_PROVIDER,
 		AUTH_API_PROVIDER,
+		NOTIFICATION_API_PROVIDER,
 		provideZoneChangeDetection({ eventCoalescing: true }),
 		providePrimeNG({
 			theme: {

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, type OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NotificationService } from '@data-access/notifications/application/notification.service';
 import { MainLayoutComponent } from '@shared/layouts/main-layout/main-layout.component';
 import { ThemeSwitcherService } from '@shared/services/theme-switcher.service';
 import { Languages } from 'assets/i18n/languages';
@@ -17,9 +18,12 @@ export class AppComponent implements OnInit {
 	public isAuthenticated = true;
 	private themeSwitcherService = inject(ThemeSwitcherService);
 	private _translationService = inject(TranslationService);
+	private _notificationService = inject(NotificationService);
 
 	async ngOnInit(): Promise<void> {
 		this._translationService.setTranslationLanguage(Languages.SPANISH);
 		this.themeSwitcherService.setTheme(ThemeSwitcherType.LIGHT);
+		this._notificationService.startConnection();
+		this._notificationService.addUsersCreatedListener();
 	}
 }
